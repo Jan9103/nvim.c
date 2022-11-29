@@ -1,3 +1,3 @@
 require('nu').setup({
-    complete_cmd_names = false,
+    complete_cmd_names = true,
 })

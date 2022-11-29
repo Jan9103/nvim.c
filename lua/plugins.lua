@@ -53,7 +53,7 @@ return require('packer').startup({function(use)
 	}
 
 	use {'jose-elias-alvarez/null-ls.nvim',
-		disable = true,
+		--disable = true,
 		requires = 'nvim-lua/plenary.nvim',
 		config = function() require('config.null_ls') end,
 	}
@@ -212,6 +212,10 @@ return require('packer').startup({function(use)
 	use {'junegunn/gv.vim',
 		cmd = 'GV',
 		requires = 'vim-fugitive',
+	}
+	use {'lewis6991/gitsigns.nvim',
+		cmd = 'Gitsigns',
+		config = function() require('gitsigns').setup() end,
 	}
 
 	--- trouble (a list of issues) ---
