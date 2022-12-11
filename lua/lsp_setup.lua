@@ -21,7 +21,9 @@ lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_c
 
 -------- Server -------
 --lspconfig.sumneko_lua.setup{}
+--lspconfig.angularls.setup{}  -- npm install -g @angular/language-server
 lspconfig.bashls.setup{cmd={'bash-language-server', 'start'}}
+lspconfig.nil_ls.setup{} -- cargo install --git https://github.com/oxalica/nil nil
 lspconfig.clangd.setup{}
 lspconfig.cssls.setup{}
 lspconfig.dockerls.setup{}
