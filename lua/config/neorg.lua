@@ -6,7 +6,8 @@ require('neorg').setup {
 			workspaces = {
 				home = '~/neorg/spaces/home',
 				work = "~/neorg/spaces/work",
-			}
+			},
+			open_last_workspace = true,
 		}},
 		['core.integrations.nvim-cmp'] = {config = {}},
 		['core.norg.completion'] = {config = {
