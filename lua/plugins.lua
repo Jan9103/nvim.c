@@ -170,6 +170,10 @@ return require('packer').startup({function(use)
 		ft = 'nu',
 	}
 	use {'aklt/plantuml-syntax', ft = 'plantuml'}
+	use {'weirongxu/plantuml-previewer.vim',
+		ft = 'plantuml',
+		requires = 'tyru/open-browser.vim',
+	}
 	use {'mracos/mermaid.vim', ft = 'mermaid'}
 	-- use {'python-rope/ropevim', ft = {'python'}}  -- https://github.com/python-rope/ropevim/issues/97
 	use {'mboughaba/i3config.vim', ft = 'i3config'}
