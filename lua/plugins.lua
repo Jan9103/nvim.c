@@ -1,124 +1,120 @@
 -- luacheck: globals vim
-local packer_bootstrap = false
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({
-		'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path
+
+-- bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"--single-branch",
+		"https://github.com/folke/lazy.nvim.git",
+		lazypath,
 	})
-	vim.cmd [[packadd packer.nvim]]
 end
+vim.opt.runtimepath:prepend(lazypath)
 
-return require('packer').startup({function(use)
-	use 'wbthomason/packer.nvim'  -- the packagemanager itself
-
-
-
+-- configure plugin list
+return require('lazy').setup({
 	--- common dependencies
-	use 'nvim-lua/plenary.nvim'
+	'nvim-lua/plenary.nvim',
 
-	use {'williamboman/mason.nvim',
-		disable = true,
+	{'williamboman/mason.nvim',
+		enabled = false,
 		config = function() require('config.mason') end,
-	}
+	},
 
-	use {'mfussenegger/nvim-dap',
-		requires = {
-			{'rcarriga/cmp-dap', after = {'nvim-dap', 'nvim-cmp'}}, -- tab-complete
-		},
-		after = 'mason.nvim',
+	{'mfussenegger/nvim-dap',
+		-- after = 'williamboman/mason.nvim',
 		config = function() require('config.dap') end,
-	}
+	},
+	{'rcarriga/cmp-dap',
+		dependencies = {'mfussenegger/nvim-dap', 'hrsh7th/nvim-cmp'},
+	},
 
-	use {'jayp0521/mason-nvim-dap.nvim',
-		disable = true,
-		requires = {'nvim-dap', 'mason.nvim'},
-		after = {'nvim-dap', 'mason.nvim'},
+	{'jayp0521/mason-nvim-dap.nvim',
+		enabled = false,
+		dependencies = {'mfussenegger/nvim-dap', 'williamboman/mason.nvim'},
 		config = function() require("mason-nvim-dap").setup() end,
-	}
+	},
 
-	use {'williamboman/mason-lspconfig.nvim',
-		disable = true,
+	{'williamboman/mason-lspconfig.nvim',
+		enabled = false,
 		config = function() require("config.mason-lspconfig") end,
-		after = 'mason.nvim',
-	}
+		dependencies = {'williamboman/mason.nvim'},
+	},
 
-	use {'neovim/nvim-lspconfig',
+	{'neovim/nvim-lspconfig',
 		--after = 'mason-lspconfig.nvim',
-	}
+	},
 
-	use {'tamago324/nlsp-settings.nvim',
+	{'tamago324/nlsp-settings.nvim',
 		config = function() require('lsp_setup') end,
-		after = 'nvim-lspconfig',
-	}
+		dependencies = {'neovim/nvim-lspconfig'},
+	},
 
-	use {'jose-elias-alvarez/null-ls.nvim',
-		--disable = true,
-		requires = 'nvim-lua/plenary.nvim',
+	{'jose-elias-alvarez/null-ls.nvim',
+		--enabled = false,
+		dependencies = {'nvim-lua/plenary.nvim'},
 		config = function() require('config.null_ls') end,
-	}
+	},
 
-	use {'jayp0521/mason-null-ls.nvim',
-		disable = true,
-		requires = {'mason.nvim', 'null-ls.nvim'},
-		after = {'mason.nvim', 'null-ls.nvim'},
+	{'jayp0521/mason-null-ls.nvim',
+		enabled = false,
+		dependencies = {'williamboman/mason.nvim', 'jose-elias-alvarez/null-ls.nvim'},
 		config = function() require("mason-null-ls").setup() end,
-	}
+	},
 
-	use {'mfussenegger/nvim-lint',
-		requires = 'nvim-lua/plenary.nvim',
+	{'mfussenegger/nvim-lint',
+		dependencies = 'nvim-lua/plenary.nvim',
 		config = function() require('config.nvim_lint') end,
-	}
+	},
 
-	--- sleuth (auto use tab/ space) ---
-	use 'tpope/vim-sleuth'
+	--- sleuth (auto tab/ space) ---
+	'tpope/vim-sleuth',
 
 	--- telescope ---
-	use {'nvim-telescope/telescope.nvim',
+	{'nvim-telescope/telescope.nvim',
 		tag = '0.1.0',
-		requires = {
-			{'nvim-lua/plenary.nvim'},
-			{'BurntSushi/ripgrep'},
-			{'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},  -- speed improvement
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'BurntSushi/ripgrep',
+			{'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},  -- speed improvement
+			'rcarriga/nvim-notify',
 		},
-		after = {'nvim-notify',},
 		--config = function() require('config.telescope') end,
-	}
+	},
 
 	--- HYDRA ---
-	use 'anuvyklack/hydra.nvim'
+	'anuvyklack/hydra.nvim',
 
 	--- TreeSitter ---
-	use {'nvim-treesitter/nvim-treesitter',
+	{'nvim-treesitter/nvim-treesitter',
 		commit = 'ea0e91b63abfb6e5db48aacf0bb257e053b0c805',  -- something later broke neorg, etc
-		run = ':TSUpdate',
+		build = ':TSUpdate',
 		config = function() require('config.treesitter') end,
-	}
-	use {'nvim-treesitter/nvim-treesitter-context',
-		requires = 'nvim-treesitter',
-		--cmd = {'TSContextEnable', 'TSContextToggle'},
-		after = 'nvim-treesitter',
+	},
+	{'nvim-treesitter/nvim-treesitter-context',
+		dependencies = {'nvim-treesitter/nvim-treesitter'},
 		config = function() require('config.TSContext') end,
-	}
+	},
 	-- readd todo highlight, which has been broken by TS
-	use {'folke/todo-comments.nvim',
-		requires = "nvim-lua/plenary.nvim",
+	{'folke/todo-comments.nvim',
+		dependencies = {'nvim-lua/plenary.nvim'},
 		config = function() require("todo-comments").setup{} end,
-	}
+	},
 
 	--- tabcomplete ----
-	use 'rafamadriz/friendly-snippets'
-	use '~/git/nu_snippets'
-	use {'L3MON4D3/LuaSnip',
-		require = {
-		},
+	--'~/git/nu_snippets',
+	{'L3MON4D3/LuaSnip',
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()  -- load friendly-snippets
 		end,
-		after = {'friendly-snippets'},
-	}
-	use {'hrsh7th/nvim-cmp',
-		requires = {
+		dependencies = {'rafamadriz/friendly-snippets'},
+	},
+	{'hrsh7th/nvim-cmp',
+		dependencies = {
+			'L3MON4D3/LuaSnip',
 			'neovim/nvim-lspconfig',
 			'hrsh7th/cmp-nvim-lsp',
 			{'hrsh7th/cmp-nvim-lsp-signature-help', ft = 'python'},
@@ -130,125 +126,108 @@ return require('packer').startup({function(use)
 			{'hrsh7th/cmp-calc', ft = {'markdown', 'asciidoc', 'rst', 'text'}},
 		},
 		config = function() require('config.nvim_cmp') end,
-		after = {'LuaSnip'},
-	}
+	},
 
-	use {'saadparwaiz1/cmp_luasnip',  -- luasnip, cmp connector
-		after ={'nvim-cmp', 'LuaSnip'},
-	}
+	{'saadparwaiz1/cmp_luasnip',  -- luasnip, cmp connector
+		dependencies = {'hrsh7th/nvim-cmp', 'L3MON4D3/LuaSnip'},
+	},
 
-	use {'filipgodlewski/luasnip-ts-snippets.nvim',
-		ft = {'lua'},
-		config = function()
-			require("luasnip-ts-snippets").setup({})
-		end,
-	}
+	-- {'filipgodlewski/luasnip-ts-snippets.nvim',
+	-- 	ft = {'lua'},
+	-- 	config = function()
+	-- 		require("luasnip-ts-snippets").setup({})
+	-- 	end,
+	-- },
 
 	--- statusline ---
-	use {'nvim-lualine/lualine.nvim',
-		requires = {
+	{'nvim-lualine/lualine.nvim',
+		dependencies = {
 			'kyazdani42/nvim-web-devicons', -- nerdfont
 			'arkav/lualine-lsp-progress', -- lsp boot progress bar
 		},
-		after = 'lualine-lsp-progress',
 		config = function() require('config.lualine') end,
-	}
+	},
 
-	use 'Raimondi/delimitMate'  -- auto close delimiters
-	use 'tpope/vim-commentary'  -- fast comment
-	use 'Mofiqul/dracula.nvim'  -- colorscheme
+	'Raimondi/delimitMate',  -- auto close delimiters
+	'tpope/vim-commentary',  -- fast comment
+	'Mofiqul/dracula.nvim',  -- colorscheme
 
-	use {'rcarriga/nvim-notify',
+	{'rcarriga/nvim-notify',
 		config = function() require('config.notify') end,
-	}
+	},
 
 	---------------- syntax specific --------------
-	use {'LhKipp/nvim-nu',
-		requires = {'nvim-treesitter',}, -- 'null-ls.nvim'},
-		run = ':TSInstall nu',
+	{'LhKipp/nvim-nu',
+		dependencies = {'nvim-treesitter/nvim-treesitter',}, -- 'jose-elias-alvarez/null-ls.nvim'},
+		build = ':TSInstall nu',
 		config = function() require('config.nvim_nu') end,
 		ft = 'nu',
-	}
-	use {'aklt/plantuml-syntax', ft = 'plantuml'}
-	use {'weirongxu/plantuml-previewer.vim',
+	},
+	{'aklt/plantuml-syntax', ft = 'plantuml'},
+	{'weirongxu/plantuml-previewer.vim',
 		ft = 'plantuml',
-		requires = 'tyru/open-browser.vim',
-	}
-	use {'mracos/mermaid.vim', ft = 'mermaid'}
-	-- use {'python-rope/ropevim', ft = {'python'}}  -- https://github.com/python-rope/ropevim/issues/97
-	use {'mboughaba/i3config.vim', ft = 'i3config'}
-	use {'wgwoods/vim-systemd-syntax', ft = 'systemd'}
-	use {
+		dependencies = 'tyru/open-browser.vim',
+	},
+	{'mracos/mermaid.vim', ft = 'mermaid'},
+	-- {'python-rope/ropevim', ft = {'python'}},  -- https://github.com/python-rope/ropevim/issues/97
+	{'mboughaba/i3config.vim', ft = 'i3config'},
+	{'wgwoods/vim-systemd-syntax', ft = 'systemd'},
+	{
 		'mechatroner/rainbow_csv',
 		ft = {'csv','csv_semicolon','csv_whitespace','csv_pipe','tsv','rfc_csv','rfc_semicolon',},
-	}
-	use {'habamax/vim-asciidoctor', ft = 'asciidoc'}
-	use {'ron-rs/ron.vim', ft = 'ron'}
-	--use {'~/git/vim_plugins/todo.txt'}
-	use {'https://gitlab.com/inko-lang/inko.vim.git', ft = 'inko'}
-	use {'makerj/vim-pdf'}
+	},
+	{'habamax/vim-asciidoctor', ft = 'asciidoc'},
+	{'ron-rs/ron.vim', ft = 'ron'},
+	--{'https://gitlab.com/inko-lang/inko.vim.git', ft = 'inko'},
+	{'makerj/vim-pdf'},
 
-	use {'metakirby5/codi.vim', cmd = {'Codi'}}
+	{'metakirby5/codi.vim', cmd = {'Codi'}},
 
-	use {'Shougo/junkfile.vim', cmd = {'JunkfileOpen'}}
+	{'Shougo/junkfile.vim', cmd = {'JunkfileOpen'}},
 
-	use {'jbyuki/venn.nvim', cmd = {'VBox'}}
+	{'jbyuki/venn.nvim', cmd = {'VBox'}},
 
-	use {'Pocco81/HighStr.nvim',
+	{'Pocco81/HighStr.nvim',
 		cmd = {'HSHighlight', 'HSImport'},
 		config = function() require('config.highstr') end,
-	}
+	},
 
 	--- orgmode ---
-	use {'nvim-neorg/neorg', tag = '0.0.15', --tag = '0.0.12', -- 0.0.13 is broken   tag = '*',
-		requires = {
+	{'nvim-neorg/neorg', tag = '0.0.15', --tag = '0.0.12', -- 0.0.13 is broken   tag = '*',
+		dependencies = {
 			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope.nvim',
+			'hrsh7th/nvim-cmp',
 			'nvim-neorg/neorg-telescope',
-			{'folke/zen-mode.nvim', config = function() require'config.zenmode' end, ft = 'norg'},
+			{'folke/zen-mode.nvim', config = function() require'config.zenmode' end, lazy = true},
 		},
 		cmd = {'Neorg', 'NeorgStart'}, ft = 'norg',
-		after = {'nvim-treesitter', 'telescope.nvim', 'nvim-cmp'},
 		config = function() require'config.neorg' end,
-	}
+	},
 
 	--- git ---
-	use 'tpope/vim-fugitive'
-	use {'junegunn/gv.vim',
+	'tpope/vim-fugitive',
+	{'junegunn/gv.vim',
 		cmd = 'GV',
-		requires = 'vim-fugitive',
-	}
-	use {'lewis6991/gitsigns.nvim',
+		dependencies = {'tpope/vim-fugitive'},
+	},
+	{'lewis6991/gitsigns.nvim',
 		cmd = 'Gitsigns',
 		config = function() require('gitsigns').setup() end,
-	}
+	},
 
 	--- trouble (a list of issues) ---
-	use {'folke/trouble.nvim',
-		requires = {'kyazdani42/nvim-web-devicons'},
+	{'folke/trouble.nvim',
+		dependencies = {'kyazdani42/nvim-web-devicons'},
 		config = function() require("trouble").setup{} end,
-	}
+	},
 
 	--- bookmarks ---
-	use {'MattesGroeger/vim-bookmarks',
+	{'MattesGroeger/vim-bookmarks',
 		config = function() vim.g.bookmark_highlight_lines = 1 end,
-	}
-	use {'tom-anders/telescope-vim-bookmarks.nvim',
-		requires = {'vim-bookmarks', 'telescope.nvim'},
-		disable = true,
-	}
-
-
-
-	if packer_bootstrap then
-		require('packer').sync()
-	end
-end,
-config = {
-		display = {
-			open_fn = function() return require('packer.util').float({border='single'}) end,
-		},
-		profile = {
-			enable = true,
-			threshold = 1,
-		},
-}})
+	},
+	{'tom-anders/telescope-vim-bookmarks.nvim',
+		dependencies = {'MattesGroeger/vim-bookmarks', 'nvim-telescope/telescope.nvim'},
+		enabled = false,
+	},
+})

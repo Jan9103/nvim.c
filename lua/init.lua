@@ -23,6 +23,6 @@ end
 if isModuleAvailable('dracula') then
 	load_script('config.dracula')  -- has to be done before the plugin loads
 end
-load_script('load_impatient')
+--load_script('load_impatient')
 load_script('plugins')
 load_script('keybinds')

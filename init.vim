@@ -47,13 +47,13 @@ set whichwrap+=<,>,[,] " go to prev line with left or next with right
 "catch
 "endtry
 
-lua require('init')
-
 if &term =~# 'kitty'
 	set termguicolors
 elseif &term =~# '^\(screen\|xterm\)$'
 	set t_Co=256
 endif
+
+lua require('init')
 
 colorscheme dracula
 
