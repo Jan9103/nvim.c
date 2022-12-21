@@ -6,8 +6,15 @@ end
 
 local luasnip = require("luasnip")
 local cmp = require'cmp'
+local compare = require('cmp.config.compare')
 
 cmp.setup({
+	-- sorting = {
+	-- 	comparators = {
+	-- 		compare.score,
+	-- 		compare.order,
+	-- 	},
+	-- },
 	preselect = cmp.PreselectMode.None,
 	snippet = {
 		expand = function(args)
@@ -100,20 +107,26 @@ cmp.setup.filetype('gitcommit', {
 })
 
 cmp.setup.filetype({'markdown', 'asciidoc', 'text', 'rst'}, {
+	sorting = {
+		comparators = {
+			compare.score,
+			compare.order,
+		},
+	},
 	sources = cmp.config.sources({
-		--{ name = 'spell' },
 		{ name = 'calc' },
 		{ name = 'buffer' },
 		{ name = 'path' },
-		{
-			name = 'look',
-			keyword_length = 2,
-			option = {
-				convert_case = true,
-				loud = true
-				--dict = '/usr/share/dict/words'
-			},
-		},
+		{ name = 'mocword' },
+		--{
+		--	name = 'look',
+		--	keyword_length = 2,
+		--	option = {
+		--		convert_case = true,
+		--		loud = true
+		--		--dict = '/usr/share/dict/words'
+		--	},
+		--},
 	})
 })
 

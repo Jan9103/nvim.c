@@ -122,8 +122,9 @@ return require('lazy').setup({
 			'hrsh7th/cmp-path',
 			'hrsh7th/cmp-cmdline',
 			'onsails/lspkind.nvim',
-			{'octaltree/cmp-look', ft = {'markdown', 'asciidoc', 'rst', 'text'}},
+			--{'octaltree/cmp-look', ft = {'markdown', 'asciidoc', 'rst', 'text'}},
 			{'hrsh7th/cmp-calc', ft = {'markdown', 'asciidoc', 'rst', 'text'}},
+			{'jan9103/cmp-mocword', ft = {'markdown', 'text'}}
 		},
 		config = function() require('config.nvim_cmp') end,
 	},
