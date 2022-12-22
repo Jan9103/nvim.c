@@ -49,7 +49,7 @@ return require('lazy').setup({
 	},
 
 	{'tamago324/nlsp-settings.nvim',
-		config = function() require('lsp_setup') end,
+		config = function() require('config.lsp_setup') end,
 		dependencies = {'neovim/nvim-lspconfig'},
 	},
 
