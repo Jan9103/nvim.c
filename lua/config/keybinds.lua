@@ -73,7 +73,7 @@ norecallback('n', 'gd', vim.lsp.buf.definition)
 norecallback('n', 'gD', vim.lsp.buf.declaration)
 norecallback('n', 'gr', vim.lsp.buf.references)
 norecallback('n', 'gi', vim.lsp.buf.implementation)
-norecallback('n', 'fh', vim.lsp.buf.hover)
+norecallback('n', 'fh', vim.lsp.buf.hover)  -- TODO: noice or lspsaga
 norecallback('n', 'fN', vim.diagnostic.goto_prev)
 norecallback('n', 'fn', vim.diagnostic.goto_next)
 norecallback('n', 'fl', vim.diagnostic.setloclist)

@@ -32,12 +32,6 @@ vim.opt.relativenumber = true
 vim.opt.list = true
 vim.opt.laststatus = 0 -- 2
 vim.o.background = "dark"
-vim.cmd([[
-	colorscheme dracula
-	hi TreesitterContextBottom gui=underline guisp=Grey
-	hi TreesitterContext guibg=#303242
-	hi BookmarkSign guifg=#BD93F9
-]])
 
 --- default settings ---
 vim.opt.foldmethod = "indent"

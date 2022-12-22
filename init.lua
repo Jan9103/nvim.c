@@ -21,9 +21,5 @@ local function load_script(name)
 end
 
 require('config.options')
-if isModuleAvailable('dracula') then
-	load_script('config.dracula')  -- has to be done before the plugin loads
-end
---load_script('load_impatient')
-load_script('config.plugins')
+load_script('config.lazy')
 require('config.keybinds')
