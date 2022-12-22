@@ -21,5 +21,5 @@ local function load_script(name)
 end
 
 require('config.options')
-load_script('config.lazy')
+require('config.lazy')
 require('config.keybinds')
