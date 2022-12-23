@@ -1,5 +1,6 @@
+-- add linter
+
 -- luacheck: globals vim
--- https://github.com/mfussenegger/nvim-lint
 
 local M = {
 	'mfussenegger/nvim-lint',

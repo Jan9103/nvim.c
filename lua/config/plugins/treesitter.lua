@@ -1,3 +1,5 @@
+-- better syntax highlight
+
 -- luacheck: globals vim
 
 local M = {
@@ -7,27 +9,25 @@ local M = {
 }
 
 function M.config()
-	local disabled_syntaxes = {
-		'asciidoc',
-		'help', -- errors..
-		'markdown', -- turns stuff invisible, which i want to see
-		'vim',
-	}
-
 	require'nvim-treesitter.configs'.setup {
 		-- A list of parser names, or "all"
 		ensure_installed = {
 			'lua',
 			'python',
 			'bash',
+			'markdown', -- required by headline
 		},
 		sync_install = false,
 		auto_install = false,
-		ignore_install = disabled_syntaxes,
 
 		highlight = {
 			enable = true,
-			disable = disabled_syntaxes,
+			disable = {
+				'asciidoc', -- default better
+				'markdown', -- default better
+				'help', -- produces errors
+				'vim', -- default better
+			},
 			additional_vim_regex_highlighting = false,
 		},
 

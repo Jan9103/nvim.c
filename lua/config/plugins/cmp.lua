@@ -1,3 +1,5 @@
+-- tab completion
+
 -- luacheck: globals vim
 local M = {
 	'hrsh7th/nvim-cmp',

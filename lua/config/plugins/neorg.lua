@@ -1,3 +1,5 @@
+-- orgmode (journal, notes, todo lists, etc)
+
 -- default keybinds: https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
 
 local M = {
@@ -9,7 +11,7 @@ local M = {
 		'hrsh7th/nvim-cmp',
 		'nvim-neorg/neorg-telescope',
 		{'folke/zen-mode.nvim',
-			config = function() require'config.zenmode' end,
+			config = function() require'zen-mode'.setup() end,
 		},
 	},
 	cmd = {'Neorg', 'NeorgStart'},

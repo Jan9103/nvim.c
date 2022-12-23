@@ -1,3 +1,5 @@
+-- marker pen for code (visual mode -> <esc> -> :HSHighlight)
+
 local M = {
 	'Pocco81/HighStr.nvim',
 	cmd = {'HSHighlight', 'HSImport'},

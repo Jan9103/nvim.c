@@ -1,3 +1,5 @@
+-- packagemanager for language-server, linter, etc
+
 ------------- MASON LSPCONFIG --------------
 local mason_lspconfig = {
 	'williamboman/mason-lspconfig.nvim',
@@ -22,6 +24,7 @@ end
 
 local M = {
 	'williamboman/mason.nvim',
+	cmd = 'Mason',
 	dependencies = {
 		mason_lspconfig,
 		mason_null_ls,

@@ -1,3 +1,5 @@
+-- a few commands/guis for the language server
+
 local M = {
 	'glepnir/lspsaga.nvim',
 	branch = 'main',

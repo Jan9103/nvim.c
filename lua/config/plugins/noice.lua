@@ -1,3 +1,5 @@
+-- a gui rework (notifications, command-line, search, etc)
+
 local M = {
 	'folke/noice.nvim',
 	event = 'VeryLazy',
@@ -24,7 +26,7 @@ function M.config()
 		},
 		commands = {
 			all = {
-				view = 'split',
+				--view = 'split',
 				opts = {enter = true, format = 'details'},
 				filter = {},
 			},

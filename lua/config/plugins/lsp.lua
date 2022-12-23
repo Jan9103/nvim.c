@@ -1,3 +1,5 @@
+-- language server setup
+
 -- luacheck: globals vim
 
 local M = {

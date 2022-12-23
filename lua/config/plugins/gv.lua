@@ -1,3 +1,5 @@
+-- git blame & git log
+
 local M = {
 	'junegunn/gv.vim',
 	cmd = 'GV',

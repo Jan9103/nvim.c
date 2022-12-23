@@ -1,3 +1,5 @@
+-- a gui with all kinds of searches
+
 local M = {
 	'nvim-telescope/telescope.nvim',
 	cmd = 'Telescope',

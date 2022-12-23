@@ -1,3 +1,5 @@
+-- give context to the current line by displaying the class/function/loop-opening line above
+
 local M = {
 	enable = false,
 	'nvim-treesitter/nvim-treesitter-context',

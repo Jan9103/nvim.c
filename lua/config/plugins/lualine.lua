@@ -1,3 +1,5 @@
+-- statusbar at the bottom
+
 local M = {
 	'nvim-lualine/lualine.nvim',
 	lazy = false,

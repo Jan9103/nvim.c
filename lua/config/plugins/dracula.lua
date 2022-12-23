@@ -1,3 +1,5 @@
+-- a colorscheme
+
 local M = {
 	'Mofiqul/dracula.nvim',
 	lazy = false,

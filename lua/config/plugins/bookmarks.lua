@@ -1,3 +1,5 @@
+-- cross file bookmarks & line-notes
+
 local M = {
 	'MattesGroeger/vim-bookmarks',
 	lazy = false,

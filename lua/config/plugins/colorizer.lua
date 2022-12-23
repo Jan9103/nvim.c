@@ -1,3 +1,6 @@
+-- syntax highlight for colorcodes
+-- not active by default (-> command)
+
 local M = {
 	'norcalli/nvim-colorizer.lua',
 	cmd = {

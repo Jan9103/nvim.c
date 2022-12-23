@@ -1,3 +1,5 @@
+-- list all lsp-errors, etc in a single panel
+
 local M = {
 	'folke/trouble.nvim',
 	cmd = {'TroubleToggle', 'Trouble'},

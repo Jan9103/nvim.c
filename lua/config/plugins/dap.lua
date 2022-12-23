@@ -1,3 +1,6 @@
+-- debug adapter protocol
+-- run with breakpoints, etc
+
 -- 'rcarriga/cmp-dap'
 -- 'jayp0521/mason-nvim-dap.nvim'
 local M = {

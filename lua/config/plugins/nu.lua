@@ -1,3 +1,5 @@
+-- everything about the nu scripting language (syntax highlight, tab complete, etc)
+
 local M = {
 		'LhKipp/nvim-nu',
 		dependencies = {
