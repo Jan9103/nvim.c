@@ -17,8 +17,13 @@ function M.config()
 			'bash',
 			'markdown', -- required by headline
 		},
-		sync_install = false,
-		auto_install = false,
+		sync_install = true,
+		auto_install = false, -- does not work for some reason
+		ignore_install = {
+			'help', -- bugged
+			'vim', -- default better
+			'asciidoc', -- default better
+		}
 
 		highlight = {
 			enable = true,

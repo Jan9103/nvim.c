@@ -25,13 +25,20 @@ function M.config()
 			cmdline_output_to_split = false,
 		},
 		commands = {
-			all = {
-				--view = 'split',
-				opts = {enter = true, format = 'details'},
-				filter = {},
+			--all = {
+			--	view = 'popup', -- split, lsp_progress, nil, hover
+			--	opts = {enter = true, format = 'details'},
+			--	filter = {},
+			--},
+			hover = {
+				view = 'hover',
+			},
+			signature = {
+				view = 'hover',
 			},
 		},
 	})
+
 end
 
 return M

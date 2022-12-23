@@ -70,6 +70,18 @@ function M.config()
 			yaml = {
 				'block_mapping_pair',
 			},
+			python = {
+				'class',
+				'function',
+				'method',
+				'for',
+				'while',
+				'if',
+				'switch',
+				'case',
+				'try',
+				'except',  -- TODO: find out the correct name for except
+			},
 		},
 		exact_patterns = {
 			-- Example for a specific filetype with Lua patterns

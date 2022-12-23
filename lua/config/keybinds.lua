@@ -78,6 +78,18 @@ norecallback('n', 'fN', vim.diagnostic.goto_prev)
 norecallback('n', 'fn', vim.diagnostic.goto_next)
 norecallback('n', 'fl', vim.diagnostic.setloclist)
 
+-- scrollable lsp hover boxes
+vim.keymap.set('n', '<down>', function()
+	if not require('noice.lsp').scroll(4) then
+		return '<down>'
+	end
+end, {silent=true, expr=true})
+vim.keymap.set('n', '<up>', function()
+	if not require('noice.lsp').scroll(-4) then
+		return '<up>'
+	end
+end, {silent=true, expr=true})
+
 ------- HYDRAS -------
 if isHydraLoaded then
 	--- drawing ---

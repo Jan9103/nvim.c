@@ -19,7 +19,7 @@ function M.config()
 		disable_ft = {
 			'markdown',
 		},
-		disable_virtual_lines = false, -- disable for indentation based blocks (python)
+		disable_virtual_lines = true, -- disable for indentation based blocks (python)
 		disable_virtual_lines_ft = {
 			'yaml',
 		},

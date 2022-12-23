@@ -4,7 +4,7 @@
 
 local M = {
 	'nvim-neorg/neorg',
-	tag = '*', --'0.0.15',
+	tag = '0.0.15',
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 		'nvim-telescope/telescope.nvim',
