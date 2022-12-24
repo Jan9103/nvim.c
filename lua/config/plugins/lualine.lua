@@ -2,6 +2,7 @@
 
 local M = {
 	'nvim-lualine/lualine.nvim',
+	enabled = false,
 	lazy = false,
 	dependencies = {
 		'kyazdani42/nvim-web-devicons',
