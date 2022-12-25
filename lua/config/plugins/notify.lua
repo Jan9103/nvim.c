@@ -1,5 +1,7 @@
 -- a notification rework
 
+-- luacheck: globals vim
+
 local M = {
 	'rcarriga/nvim-notify',
 }

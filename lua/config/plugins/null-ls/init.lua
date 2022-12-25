@@ -1,5 +1,7 @@
 -- language-server simulator (linter -> lsp)
 
+-- luacheck: globals vim
+
 local M = {
 	'jose-elias-alvarez/null-ls.nvim',
 	dependencies = {
@@ -11,12 +13,17 @@ function M.setup(options)
 	require('mason-null-ls')
 
 	local nls = require('null-ls')
+	local diagnostics = nls.builtins.diagnostics
+	local code_actions = nls.builtins.code_actions
+
 	nls.setup({
 		debounce = 150,
 		save_after_format = false,
 		sources = {
-			nls.builtins.code_actions.gitsigns,
-			nls.builtins.formatting.isort,
+			code_actions.gitsigns,
+			require('config.plugins.null-ls.mypy'),
+			require('config.plugins.null-ls.ruff'),
+			diagnostics.ruff,
 		},
 		on_attach = options.on_attach,
 		root_dir = require('null-ls.utils').root_pattern('.git'),

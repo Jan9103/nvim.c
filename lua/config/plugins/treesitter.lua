@@ -16,14 +16,14 @@ function M.config()
 			'python',
 			'bash',
 			'markdown', -- required by headline
+			'regex', 'markdown_inline', 'vim', -- required by noice.nvim
 		},
 		sync_install = true,
 		auto_install = false, -- does not work for some reason
 		ignore_install = {
 			'help', -- bugged
-			'vim', -- default better
 			'asciidoc', -- default better
-		}
+		},
 
 		highlight = {
 			enable = true,
@@ -31,7 +31,6 @@ function M.config()
 				'asciidoc', -- default better
 				'markdown', -- default better
 				'help', -- produces errors
-				'vim', -- default better
 			},
 			additional_vim_regex_highlighting = false,
 		},
