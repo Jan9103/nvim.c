@@ -11,6 +11,8 @@ local M = {
 function M.config()
 	vim.opt.laststatus = 2
 
+	local design_config = require('config.design')
+
 	require('staline').setup({
 		--- section ---
 		sections = {
@@ -33,37 +35,7 @@ function M.config()
 			Warn=" ",
 			Hint=" ",
 		},
-		file_icons = {
-			bash=' ',
-			c=' ',
-			conf=' ',
-			cpp=' ',
-			css=' ',
-			dockerfile=' ',
-			dosini=' ',
-			gitcommit=' ',
-			go=' ',
-			haskell=' ',
-			html=' ',
-			java=' ',
-			javascript=' ',
-			javascriptreact=' ',
-			json=' ',
-			lua=' ',
-			markdown=' ',
-			nu=' ',
-			php=' ',
-			python=' ',
-			ruby=' ',
-			rust=' ',
-			scss=' ',
-			sh=' ',
-			text=' ',
-			toml=' ',
-			typescript=' ',
-			vim=' ',
-			zsh=' ',
-		},
+		file_icons = design_config.file_icons,
 	})
 end
 

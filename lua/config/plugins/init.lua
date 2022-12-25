@@ -9,7 +9,7 @@ return {
 	-- auto close delimiters
 	{'Raimondi/delimitMate', lazy=false},
 	-- fast (un-) comment
-	{'tpope/vim-commentary', keys={'gc', 'gcc', 'gbc'}, lazy = false},
+	{'tpope/vim-commentary', keys={{'gc', mode='v'}, 'gcc'}},
 	-- live interpreter
 	{'metakirby5/codi.vim', cmd = {'Codi'}},
 	-- temporary files
