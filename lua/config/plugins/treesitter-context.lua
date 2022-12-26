@@ -3,7 +3,7 @@
 local M = {
 	enable = false,
 	'nvim-treesitter/nvim-treesitter-context',
-	lazy = false,
+	event = 'VeryLazy',
 	dependencies = {
 		'nvim-treesitter/nvim-treesitter',
 	},

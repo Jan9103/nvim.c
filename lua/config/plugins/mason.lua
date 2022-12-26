@@ -48,7 +48,12 @@ function M.check()
 end
 
 function M.config()
-	require('mason').setup()
+	require('mason').setup({
+		ui = {
+			check_outdated_packages_on_open = false,
+			border = 'rounded',
+		},
+	})
 	M.check()
 end
 

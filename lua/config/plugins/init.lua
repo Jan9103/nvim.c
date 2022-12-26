@@ -7,7 +7,7 @@ return {
 	-- better keybinds
 	'anuvyklack/hydra.nvim',
 	-- auto close delimiters
-	{'Raimondi/delimitMate', lazy=false},
+	{'Raimondi/delimitMate', event='VeryLazy'},
 	-- fast (un-) comment
 	{'tpope/vim-commentary', keys={{'gc', mode='v'}, 'gcc'}},
 	-- live interpreter
@@ -16,6 +16,7 @@ return {
 	{'Shougo/junkfile.vim', cmd = {'JunkfileOpen'}},
 	-- draw boxes and arrows
 	{'jbyuki/venn.nvim', cmd = {'VBox'}},
+
 	-- remove trailing whitespaces
 	-- waiting for <https://github.com/lewis6991/spaceless.nvim/pull/2>
 	--{'lewis6991/spaceless.nvim', config = function() require'spaceless'.setup() end, lazy = false},

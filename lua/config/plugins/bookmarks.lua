@@ -1,27 +1,11 @@
 -- cross file bookmarks & line-notes
 
+-- luacheck: globals vim
+
 local M = {
+	enabled = false,
 	'MattesGroeger/vim-bookmarks',
-	lazy = false,
-	keys = {
-		'mm', -- toggle bookmark
-		'mi', -- add/edit/remove line annotation
-		'mn', 'mp', -- jump between
-	},
-	cmd = {
-		'BookmarkToggle',
-		'BookmarkAnnotate',
-		'BookmarkNext',
-		'BookmarkPrev',
-		'BookmarkShowAll',
-		'BookmarkClear',
-		'BookmarkClearAll',
-		'BookmarkMoveUp',
-		'BookmarkMoveDown',
-		'BookmarkMoveToLine',
-		'BookmarkSave',
-		'BookmarkLoad',
-	},
+	event = 'VeryLazy', -- in order to load bookmarks it has to be
 	dependencies = {
 		{'tom-anders/telescope-vim-bookmarks.nvim', cmd = 'Telescope'},
 	},
