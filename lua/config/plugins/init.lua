@@ -6,8 +6,6 @@ return {
 	{'tpope/vim-sleuth', lazy=false},
 	-- better keybinds
 	'anuvyklack/hydra.nvim',
-	-- auto close delimiters
-	{'Raimondi/delimitMate', event='VeryLazy'},
 	-- fast (un-) comment
 	{'tpope/vim-commentary', keys={{'gc', mode='v'}, 'gcc'}},
 	-- live interpreter

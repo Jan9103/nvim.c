@@ -1,5 +1,7 @@
 -- another status & bufferline
 
+-- luacheck: globals vim
+
 local M = {
 	'tamton-aquib/staline.nvim',
 	lazy = false,
@@ -16,9 +18,19 @@ function M.config()
 	require('staline').setup({
 		--- section ---
 		sections = {
-			left = { 'left_sep', ' ', 'lsp' },
-			mid  = { 'right_sep_double', '-file_name', 'left_sep_double' },
-			right = { function() return vim.o.filetype end , ' ', 'right_sep' },
+			left = {
+				'left_sep',
+				' ', 'lsp',
+			},
+			mid  = {
+				'right_sep_double',
+				'-file_name',
+				'left_sep_double',
+			},
+			right = {
+				'right_sep', '- ',
+				{ 'StalineFill', function() return vim.o.filetype end, }, '- ',
+			},
 		},
 		--- design ---
 		mode_colors = { -- dracula

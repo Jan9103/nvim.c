@@ -6,7 +6,9 @@ local mason_lspconfig = {
 }
 function mason_lspconfig.config()
 	require('mason-lspconfig').setup({
-		automatic_installation = true,
+		automatic_installation = { exclude = {
+			'rust-analyzer', -- diagnostics don't work with masons version https://stackoverflow.com/questions/74237895
+		}},
 	})
 end
 

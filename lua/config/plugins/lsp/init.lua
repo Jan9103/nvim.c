@@ -4,10 +4,12 @@
 
 local M = {
 	'tamago324/nlsp-settings.nvim',
-	event = "BufReadPre",
+	--event = "BufReadPre",
+	lazy = false,
 	dependencies = {
 		'hrsh7th/cmp-nvim-lsp',
 		'neovim/nvim-lspconfig',
+		require('config.plugins.lsp.rust'),
 	},
 }
 
@@ -45,7 +47,7 @@ function M.config()
 	lspconfig.html.setup{}      -- html
 	lspconfig.jsonls.setup{}    -- json
 	lspconfig.pylsp.setup{}     -- python
-	lspconfig.rust_analyzer.setup{} -- rust
+	--lspconfig.rust_analyzer.setup{} -- rust
 	lspconfig.texlab.setup{}    -- latex
 	lspconfig.tsserver.setup{}  -- typescript
 

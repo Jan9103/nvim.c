@@ -89,7 +89,30 @@ function M.config()
 				else
 					fallback()
 				end
-			end, { "i", "s" })
+			end, { "i", "s" }),
+
+			-- ["<right>"] = cmp.mapping(function(fallback)
+			-- 	if cmp.visible() then
+			-- 		cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+			-- 	else
+			-- 		fallback()
+			-- 	end
+			-- end, {"i", "s"}),
+		},
+
+		experimental = {
+			ghost_text = true,
+		},
+
+		-- https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/default.lua
+		sorting = {  -- prevent it from putting all the snippets first..
+			comparators = {
+				compare.exact,
+				compare.score,
+				compare.recently_used,
+				compare.locality,
+				compare.order,
+			},
 		},
 
 		-- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
@@ -99,6 +122,14 @@ function M.config()
 			{ name = 'buffer' },
 			{ name = 'path' },
 		}),
+	})
+
+	cmp.setup.filetype('rust', {
+		sources = cmp.config.sources({
+			{ name = 'nvim_lsp', },
+			{ name = 'luasnip', option = { use_show_condition = false }, },
+			--{ name = 'buffer' },
+		})
 	})
 
 	cmp.setup.filetype('python', {
