@@ -36,6 +36,26 @@ function M.config()
 			vim.api.nvim_buf_set_option(b, "omnifunc", "v:lua.vim.lsp.omnifunc")
 			vim.api.nvim_buf_set_option(b, "tagfunc", "v:lua.vim.lsp.tagfunc")
 		end,
+		settings = {
+			-- https://rust-analyzer.github.io/manual.html#nvim-lsp
+			-- https://rust-analyzer.github.io/manual.html#configuration
+			["rust-analyzer"] = {
+				cargo = {
+					features = 'all',
+				},
+				completion = {
+					autoimport = {
+						enabled = true,
+					},
+				},
+				diagnostics = {
+					enable = true,
+					experimental = {
+						enable = true,
+					},
+				},
+			},
+		},
 	})
 
 	require("rust-tools").setup({

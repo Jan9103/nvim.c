@@ -61,6 +61,10 @@ noremap('n', '<C-left>',  '<C-w>h')
 noremap('n', '<C-right>', '<C-w>l')
 noremap('n', '<C-down>',  '<C-w>j')
 noremap('n', '<C-up>',    '<C-w>k')
+-- resize
+noremap('n', '+', '<cmd>res +1<cr>')
+noremap('n', '-', '<cmd>res -1<cr>')
+noremap('n', 'ff', '<C-w>T')  -- move to new tab (fullscreen)
 
 --- tab indent ---
 map('n', '>>', '')
