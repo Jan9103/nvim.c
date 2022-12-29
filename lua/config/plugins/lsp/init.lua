@@ -47,12 +47,12 @@ function M.config()
 	lspconfig.html.setup{}      -- html
 	lspconfig.jsonls.setup{}    -- json
 	lspconfig.pylsp.setup{}     -- python
-	--lspconfig.rust_analyzer.setup{} -- rust
 	lspconfig.texlab.setup{}    -- latex
 	lspconfig.tsserver.setup{}  -- typescript
 
 
-	require('config.plugins.null-ls').setup{}
+	require('config.plugins.null-ls').setup({})
+	require('config.plugins.lsp.keymap')
 end
 
 return M

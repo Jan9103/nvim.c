@@ -1,6 +1,9 @@
 -- a gui rework (notifications, command-line, search, etc)
 
+-- luacheck: globals vim
+
 local M = {
+	enabled = true,
 	'folke/noice.nvim',
 	event = 'VeryLazy',
 	dependencies = {
@@ -38,7 +41,19 @@ function M.config()
 			},
 		},
 	})
+end
 
+function M.init()
+	vim.keymap.set('n', '<down>', function()
+		if not require('noice.lsp').scroll(4) then
+			return '<down>'
+		end
+	end, {silent=true, expr=true})
+	vim.keymap.set('n', '<up>', function()
+		if not require('noice.lsp').scroll(-4) then
+			return '<up>'
+		end
+	end, {silent=true, expr=true})
 end
 
 return M

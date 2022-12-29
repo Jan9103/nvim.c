@@ -1,5 +1,7 @@
 -- a gui with all kinds of searches
 
+-- luacheck: globals vim
+
 local M = {
 	'nvim-telescope/telescope.nvim',
 	cmd = 'Telescope',
@@ -51,6 +53,13 @@ function M.config()
 	})
 	telescope.load_extension('fzf')
 	telescope.load_extension('file_browser')
+end
+
+function M.init()
+	vim.keymap.set('n', 'ftf', function() require('telescope.builtin').find_files() end) -- file-opener
+	vim.keymap.set('n', 'ftg', function() require('telescope.builtin').live_grep()  end) -- grep.
+	vim.keymap.set('n', 'fb', function() require('telescope.builtin').buffers() end) -- buffer-switcher
+	vim.keymap.set('n', 'ftd', function() require('telescope.builtin').lsp_document_symbols({symbols = 'function'}) end)
 end
 
 return M

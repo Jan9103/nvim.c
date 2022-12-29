@@ -1,5 +1,12 @@
 local M = {}
 
+M.lsp_symbols = {
+	Error=" ",
+	Info=" ",
+	Warn=" ",
+	Hint=" ",
+}
+
 M.file_icons = {
 	bash=' ',
 	c=' ',

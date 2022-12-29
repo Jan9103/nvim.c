@@ -8,6 +8,7 @@ local M = {
 
 function M.config()
 	local saga = require("lspsaga")
+	local design = require('config.design')
 
 	saga.init_lsp_saga({
 		-- single, double, rounded, bold, plus
@@ -15,7 +16,8 @@ function M.config()
 		-- transparency (0=none, 100=completly)
 		saga_winblend = 0,
 		-- Error, Warn, Info, Hint
-		diagnostic_header = { " ", " ", " ", "ﴞ " },
+		--diagnostic_header = { " ", " ", " ", "ﴞ " },
+		diagnostic_header = { design.lsp_symbols.Error, design.lsp_symbols.Warn, design.lsp_symbols.Info, design.lsp_symbols.Hint, },
 		preview_lines_above = 0,
 		max_preview_lines = 10,
 		code_action_icon = "💡",

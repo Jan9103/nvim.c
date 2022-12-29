@@ -1,7 +1,5 @@
 -- luacheck: globals vim
 
--- somewhat broken:
--- it loads, run/.. works, hover works, but no tab-completion, diagnostics, etc at all
 local M = {
 	'simrat39/rust-tools.nvim',
 	dependencies = {

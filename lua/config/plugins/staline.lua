@@ -19,8 +19,8 @@ function M.config()
 		--- section ---
 		sections = {
 			left = {
-				'left_sep',
-				' ', 'lsp',
+				'- ', '-lsp',
+				'- ', 'left_sep',
 			},
 			mid  = {
 				'right_sep_double',
@@ -29,7 +29,7 @@ function M.config()
 			},
 			right = {
 				'right_sep', '- ',
-				{ 'StalineFill', function() return vim.o.filetype end, }, '- ',
+				{ 'StalineFill', function() return (design_config.file_icons[vim.o.filetype] or '') .. vim.o.filetype end, }, '- ',
 			},
 		},
 		--- design ---
@@ -41,12 +41,7 @@ function M.config()
 			c = '#ffb86c', -- orange
 			[''] = '#44475a', -- gray
 		},
-		lsp_symbols = {
-			Error=" ",
-			Info=" ",
-			Warn=" ",
-			Hint=" ",
-		},
+		--lsp_symbols = design_config.lsp_symbols,
 		file_icons = design_config.file_icons,
 	})
 end

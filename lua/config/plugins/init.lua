@@ -2,8 +2,6 @@
 
 -- configure plugin list
 return {
-	-- auto tab/space settings
-	{'tpope/vim-sleuth', lazy=false},
 	-- better keybinds
 	'anuvyklack/hydra.nvim',
 	-- fast (un-) comment
@@ -12,8 +10,6 @@ return {
 	{'metakirby5/codi.vim', cmd = {'Codi'}},
 	-- temporary files
 	{'Shougo/junkfile.vim', cmd = {'JunkfileOpen'}},
-	-- draw boxes and arrows
-	{'jbyuki/venn.nvim', cmd = {'VBox'}},
 
 	-- remove trailing whitespaces
 	-- waiting for <https://github.com/lewis6991/spaceless.nvim/pull/2>
