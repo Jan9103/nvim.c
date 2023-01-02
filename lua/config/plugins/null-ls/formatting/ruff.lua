@@ -11,7 +11,18 @@ return helpers.make_builtin({
 	filetypes = { "python" },
 	generator_opts = {
 		command = "ruff",
-		args = { "--fix", "-e", "-n", "--stdin-filename", "$FILENAME", "-" },
+		args = {
+			"--fix",
+			"-e",
+			"-n",
+			"--line-length",
+			"100",
+			"--max-complexity",
+			"139",
+			"--stdin-filename",
+			"$FILENAME",
+			"-",
+		},
 		to_stdin = true
 	},
 	factory = helpers.formatter_factory

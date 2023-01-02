@@ -13,7 +13,6 @@ function M.setup(options)
 	require('mason-null-ls')
 
 	local nls = require('null-ls')
-	local diagnostics = nls.builtins.diagnostics
 	local code_actions = nls.builtins.code_actions
 
 	nls.setup({
@@ -21,9 +20,9 @@ function M.setup(options)
 		save_after_format = false,
 		sources = {
 			code_actions.gitsigns,
-			require('config.plugins.null-ls.mypy'),
-			require('config.plugins.null-ls.ruff'),
-			diagnostics.ruff,
+			require('config.plugins.null-ls.diagnostics.mypy'),
+			require('config.plugins.null-ls.formatting.ruff'),
+			require('config.plugins.null-ls.diagnostics.ruff'),
 		},
 		on_attach = options.on_attach,
 		root_dir = require('null-ls.utils').root_pattern('.git'),
