@@ -3,9 +3,10 @@
 -- - tpope/vim-sleuth
 -- - NMAC427/guess-indent.nvim
 
+-- luacheck: globals vim
+
 local M = {
 	'Darazaki/indent-o-matic',
-	config = true,
 	lazy = false,
 }
 
@@ -18,6 +19,10 @@ function M.init()
 	vim.opt.preserveindent = true
 	vim.opt.autoindent = true
 	vim.opt.smartindent = true
+end
+
+function M.config()
+	require('indent-o-matic').setup({})
 end
 
 return M
