@@ -9,7 +9,11 @@ local M = {
 }
 
 function M.config()
-	require('headlines').setup()
+	require('headlines').setup({
+		norg = {
+			headline_highlights = false,
+		}
+	})
 end
 
 return M
