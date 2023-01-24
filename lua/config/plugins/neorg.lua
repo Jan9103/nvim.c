@@ -24,6 +24,7 @@ function M.config()
 			["core.defaults"] = {},
 			["core.norg.dirman"] = {config = {
 				workspaces = {
+					primary = '~/neorg/spaces/primary',
 					home = '~/neorg/spaces/home',
 					work = "~/neorg/spaces/work",
 				},

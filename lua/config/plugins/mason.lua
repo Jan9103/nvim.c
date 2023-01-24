@@ -6,7 +6,7 @@ local mason_lspconfig = {
 }
 function mason_lspconfig.config()
 	require('mason-lspconfig').setup({
-		automatic_installation = true,
+		automatic_installation = false,
 	})
 end
 
@@ -16,7 +16,7 @@ local mason_null_ls = {
 }
 function mason_null_ls.config()
 	require("mason-null-ls").setup({
-		automatic_installation = true,
+		automatic_installation = false,
 	})
 end
 
