@@ -11,11 +11,11 @@ return {
 	-- temporary files
 	{'Shougo/junkfile.vim', cmd = {'JunkfileOpen'}},
 
-	-- remove trailing whitespaces
-	-- waiting for <https://github.com/lewis6991/spaceless.nvim/pull/2>
-	--{'lewis6991/spaceless.nvim', config = function() require'spaceless'.setup() end, lazy = false},
-
-	-- {'python-rope/ropevim', ft = {'python'}},  -- https://github.com/python-rope/ropevim/issues/97
+	{ 'jan9103/download-lang-files.nvim',
+		cmd = 'DownloadSpellLang',
+		dependencies = 'nvim-lua/plenary.nvim',
+		config = function() require('download-lang-files').setup() end,
+	},
 
 	--- syntax ---
 	{'aklt/plantuml-syntax', ft = 'plantuml'},
@@ -28,6 +28,4 @@ return {
 	{'habamax/vim-asciidoctor', ft = 'asciidoc'},
 	{'ron-rs/ron.vim', ft = 'ron'},
 	--{'https://gitlab.com/inko-lang/inko.vim.git', ft = 'inko'},
-
-	--- bookmarks ---
 }
