@@ -15,3 +15,11 @@
 - English text (md, adoc, RST)
 - Config files (json, toml, yaml, ron, lua, etc)
 - Small edits to frontend (html, css, js, php, etc)
+
+## Post setup:
+
+### Fix Mason MyPy, etc installations
+
+[related mason issue](https://github.com/williamboman/mason.nvim/issues/372)
+
+- `~/.local/share/nvim/mason/packages/mypy/venv/pyvenv.cfg`: `include-system-site-packages = true`
