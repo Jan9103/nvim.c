@@ -30,3 +30,5 @@ vim.opt.smartcase = true
 vim.cmd([[
 	set whichwrap+=<,>,[,]
 ]])
+
+vim.cmd('colorscheme mytheme')

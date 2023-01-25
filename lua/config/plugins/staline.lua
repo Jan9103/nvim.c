@@ -13,7 +13,7 @@ local M = {
 function M.config()
 	vim.opt.laststatus = 2
 
-	local design_config = require('config.design')
+	local d = require('config.design')
 
 	require('staline').setup({
 		--- section ---
@@ -29,20 +29,20 @@ function M.config()
 			},
 			right = {
 				'right_sep', '- ',
-				{ 'StalineFill', function() return (design_config.file_icons[vim.o.filetype] or '') .. vim.o.filetype end, }, '- ',
+				{ 'StalineFill', function() return (d.file_icons[vim.o.filetype] or '') .. vim.o.filetype end, }, '- ',
 			},
 		},
 		--- design ---
 		mode_colors = { -- dracula
-			n = '#bd93f9', -- purple
-			i = '#50fa7b', -- green
-			v = '#f1fa8c', -- yellow
-			r = '#ff5555', -- red
-			c = '#ffb86c', -- orange
-			[''] = '#44475a', -- gray
+			n = d.c.purple, -- purple
+			i = d.c.green, -- green
+			v = d.c.yellow, -- yellow
+			r = d.c.red, -- red
+			c = d.c.orange, -- orange
+			[''] = d.c.gray, -- gray
 		},
 		--lsp_symbols = design_config.lsp_symbols,
-		file_icons = design_config.file_icons,
+		file_icons = d.file_icons,
 	})
 end
 
