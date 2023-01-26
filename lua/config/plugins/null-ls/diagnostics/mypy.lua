@@ -1,6 +1,8 @@
 -- luacheck: globals vim
 local nls = require('null-ls')
 local utils = require('null-ls.utils')
+--local pl = require('project-lua').config
+-- TODO: pl.python.mypy.strict
 
 local args = {}
 

@@ -11,13 +11,9 @@ local M = {
 }
 
 function M.config()
-	require'nlspsettings' -- load normal lspsettings first
-
 	local ih = require("inlay-hints")
 
-	ih.setup({
-		only_current_line = false,
-	})
+	ih.setup({only_current_line = false,})
 
 	local lspconfig = require'lspconfig'
 	local cmp_lsp = require'cmp_nvim_lsp'

@@ -1,7 +1,5 @@
 -- luacheck: globals vim
 
-local terminal = vim.o.term
-
 vim.opt.foldlevel = 99
 
 vim.opt.encoding = "utf8"
@@ -12,9 +10,6 @@ vim.opt.wrap = true
 vim.opt.errorbells = false
 vim.opt.visualbell = false
 
-if terminal == "xterm-kitty" then
-	vim.opt.termguicolors = true
-end
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.list = true

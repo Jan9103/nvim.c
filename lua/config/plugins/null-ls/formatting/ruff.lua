@@ -1,5 +1,7 @@
 local methods = require("null-ls.methods")
 local helpers = require("null-ls.helpers")
+local pl = require('project-lua').config
+
 
 return helpers.make_builtin({
 	name = "ruff",
@@ -15,12 +17,9 @@ return helpers.make_builtin({
 			"--fix",
 			"-e",
 			"-n",
-			"--line-length",
-			"100",
-			"--max-complexity",
-			"139",
-			"--stdin-filename",
-			"$FILENAME",
+			"--line-length", pl.python.max_line_length,
+			"--max-complexity", "139",
+			"--stdin-filename", "$FILENAME",
 			"-",
 		},
 		to_stdin = true
