@@ -12,8 +12,9 @@ local M = {
 
 function M.init()
 	-- defaults
-	local width = 2
-	local use_spaces = false
+	local pl = require('project-lua').config
+	local width = pl.tabstop
+	local use_spaces = pl.spaces
 	vim.opt.shiftwidth = width
 	vim.opt.softtabstop = 0
 	vim.opt.expandtab = use_spaces

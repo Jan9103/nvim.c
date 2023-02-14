@@ -1,4 +1,6 @@
 local defaults = {
+	tabstop = 2,
+	spaces = false,
 	python = {
 		max_line_length = 120,
 		ignore = "",
