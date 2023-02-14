@@ -23,11 +23,4 @@ function M.config()
 	loadFT()
 end
 
-function M.init()
-	vim.api.nvim_create_autocmd('FileType', {
-		group = vim.api.nvim_create_augroup('DAP_FT_LOAD', {}),
-		callback = loadFT,
-	})
-end
-
 return M

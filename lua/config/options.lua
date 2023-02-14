@@ -1,4 +1,5 @@
 -- luacheck: globals vim
+--
 
 vim.opt.foldlevel = 99
 
@@ -13,6 +14,11 @@ vim.opt.visualbell = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.list = true
+vim.opt.listchars = {
+	tab = '│›', -- "indent-blankline" hides the first char -> requires 2 chars to be visible
+	lead = '·',
+	trail = '·',
+}
 vim.o.background = "dark"
 
 vim.opt.incsearch = true

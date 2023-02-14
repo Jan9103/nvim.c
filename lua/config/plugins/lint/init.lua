@@ -5,8 +5,8 @@
 local linters_by_ft = {
 	lua = {'luacheck',},
 	plaintex = {'chktex',},  -- latex
-	--python = {'ruff',},
-	rst = {'vale', 'rstcheck', 'rstlint',},
+	python = {'mypy',},
+	rst = {'rstcheck',},
 	vim = {'vint',},
 	yaml = {'yamllint',},
 }
@@ -28,6 +28,7 @@ local M = {
 
 function M.config()
 	local lint = require('lint')
+	lint.linters.mypy = require('config.plugins.lint.mypy')
 
 	lint.linters_by_ft = linters_by_ft
 

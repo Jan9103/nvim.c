@@ -11,10 +11,13 @@ local M = {
 }
 
 function M.init()
-	vim.opt.shiftwidth = 2
+	-- defaults
+	local width = 2
+	local use_spaces = false
+	vim.opt.shiftwidth = width
 	vim.opt.softtabstop = 0
-	vim.opt.expandtab = false
-	vim.opt.tabstop = 2
+	vim.opt.expandtab = use_spaces
+	vim.opt.tabstop = width
 	vim.opt.copyindent = true
 	vim.opt.preserveindent = true
 	vim.opt.autoindent = true

@@ -6,6 +6,7 @@ local M = {
 	'jose-elias-alvarez/null-ls.nvim',
 	dependencies = {
 		'nvim-lua/plenary.nvim',
+		{dir = "~/git/polint.null-ls"},
 	},
 }
 
@@ -18,11 +19,12 @@ function M.setup(options)
 
 	local sources = {
 		code_actions.gitsigns,
+		require('null-ls-polint'),
 	}
 	if pl.python.lint then
-		if pl.python.mypy.enabled then
-			table.insert(sources, require('config.plugins.null-ls.diagnostics.mypy'))
-		end
+		-- if pl.python.mypy.enabled then
+		-- 	table.insert(sources, require('config.plugins.null-ls.diagnostics.mypy'))
+		-- end
 		table.insert(sources, require('config.plugins.null-ls.formatting.ruff'))
 		table.insert(sources, require('config.plugins.null-ls.diagnostics.ruff'))
 	end

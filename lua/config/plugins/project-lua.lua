@@ -4,8 +4,9 @@ local defaults = {
 		ignore = "",
 		lint = true,
 		mypy = {
-			enabled = true,
+			--enabled = true,
 			strict = true,
+			ignore_missing_imports = false,
 		},
 	},
 }
