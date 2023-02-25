@@ -5,14 +5,18 @@ local M = {
 }
 
 function M.config()
+	local base_dir = vim.fs.dirname(vim.fs.find(
+		{'.git', 'mvnw', 'build.gradle'},
+		{ upward = true }
+	)[1])
+
 	require('jdtls').start_or_attach({
 		cmd = {
+			"/usr/bin/env",
+			"PWD=" .. base_dir,
 			vim.fn.stdpath('data') .. '/mason/bin/jdtls',
 		},
-		root_dir = vim.fs.dirname(vim.fs.find(
-			{'.gradlew', '.git', 'mvnw'},
-			{ upward = true }
-		)[1]),
+		root_dir = base_dir,
 		settings = {
 			completion = {
 				filteredTypes = {
