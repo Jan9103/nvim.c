@@ -21,7 +21,7 @@ function M.setup(options)
 		code_actions.gitsigns,
 		require('null-ls-polint'),
 	}
-	if pl.python.lint then
+	if pl.python.ruff.lint then
 		-- if pl.python.mypy.enabled then
 		-- 	table.insert(sources, require('config.plugins.null-ls.diagnostics.mypy'))
 		-- end

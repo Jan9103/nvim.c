@@ -21,16 +21,17 @@ function M.config()
 		sync_install = true,
 		auto_install = false, -- does not work for some reason
 		ignore_install = {
-			'help', -- bugged
 			'asciidoc', -- default better
+			'help', -- bugged
 		},
 
 		highlight = {
 			enable = true,
 			disable = {
 				'asciidoc', -- default better
-				'markdown', -- default better
+				'diff',  -- diff highlighting is really bad (no green/red for added/removed, only 1 format, etc)
 				'help', -- produces errors
+				'markdown', -- default better
 			},
 			additional_vim_regex_highlighting = false,
 		},

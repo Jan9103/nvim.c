@@ -70,12 +70,13 @@ function M.active_statusline()
 	-- required variables
 	local f_name = '%t'
 	local edited = vim.bo.mod and " " or ""
+	local readonly = vim.bo.readonly and " " or ""
 	local ft_icon = design.file_icons[vim.o.filetype] or ''
 
 	return "%#StatuslineInv#"
 		.. get_diagnostics()
 		.. "%#StatuslineNorm#%="
-		.. " " .. f_name .. edited .. " "
+		.. " " .. f_name .. edited .. readonly .. " "
 		.. "%=%#StatuslineInv#"
 		.. ft_icon .. vim.o.filetype
 end

@@ -3,8 +3,11 @@ local defaults = {
 	spaces = false,
 	python = {
 		max_line_length = 120,
-		ignore = "",
-		lint = true,
+		ruff = {
+			lint = true,
+			pyproject = false,
+			ignore = "",
+		},
 		mypy = {
 			--enabled = true,
 			strict = true,

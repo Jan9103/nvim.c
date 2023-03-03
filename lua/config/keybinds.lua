@@ -48,6 +48,8 @@ map('n', '<<', '')
 noremap('n', '<Tab>', '>>')
 noremap('n', '<S-Tab>', '<<')
 
+noremap('n', 'fs', ':sor i<CR>')
+
 -------------- INSERT MODE ------------------
 
 -------------- VISUAL MODE ------------------
