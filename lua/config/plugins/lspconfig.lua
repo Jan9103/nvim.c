@@ -12,7 +12,7 @@ local M = {
 }
 
 function M.config()
-	require('mason-lspconfig')
+	require('mason')  -- add mason packages to the $PATH
 
 	local lspc = require'lspconfig'
 	local cmp_lsp = require'cmp_nvim_lsp'

@@ -11,7 +11,7 @@ local M = {
 }
 
 function M.setup(options)
-	require('mason-null-ls')
+	require('mason')  -- add mason programs to the $PATH
 
 	local pl = require('project-lua').config
 	local nls = require('null-ls')

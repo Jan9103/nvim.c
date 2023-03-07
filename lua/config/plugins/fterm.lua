@@ -4,7 +4,7 @@
 
 local M = {
 	'numToStr/FTerm.nvim',
-	keys = '<A-b>',
+	keys = {'<A-b>', '<A-return>'},
 }
 
 function M.config()
@@ -20,10 +20,6 @@ function M.config()
 	local monitor = fterm:new({cmd = 'btm'})
 	vim.keymap.set('n', '<A-b>', function() monitor:toggle() end)
 	vim.keymap.set('t', '<A-b>', function() monitor:close() end)
-end
-
-function M.init()
-	--vim.api.nvim_create_user_command('FTerm', require('FTerm').open, { bang = true })
 	vim.keymap.set('n', '<A-return>', function() require('FTerm').toggle() end)
 	vim.keymap.set('t', '<A-return>', function() require('FTerm').close() end)
 end

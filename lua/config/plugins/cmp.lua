@@ -11,11 +11,9 @@ local M = {
 		'hrsh7th/cmp-nvim-lsp-signature-help',
 		'hrsh7th/cmp-path',
 		'jan9103/cmp-mocword',
-		'L3MON4D3/LuaSnip',
 		'neovim/nvim-lspconfig',
 		'onsails/lspkind.nvim',
 		--'PaterJason/cmp-conjure', -- {name = 'conjure'},
-		'saadparwaiz1/cmp_luasnip',
 	},
 }
 
@@ -25,17 +23,11 @@ function M.config()
 		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 	end
 
-	local luasnip = require("luasnip")
 	local cmp = require'cmp'
 	local compare = require('cmp.config.compare')
 
 	cmp.setup({
 		preselect = cmp.PreselectMode.None,
-		snippet = {
-			expand = function(args)
-				luasnip.lsp_expand(args.body)
-			end,
-		},
 		window = {
 			completion = {
 				winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
@@ -64,8 +56,6 @@ function M.config()
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
-				elseif luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
 				elseif has_words_before() then
 					cmp.complete()
 				else
@@ -76,28 +66,10 @@ function M.config()
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
-				elseif luasnip.jumpable(-1) then
-					luasnip.jump(-1)
 				else
 					fallback()
 				end
 			end, { "i", "s" }),
-
-			["<S-BackSpace>"] = cmp.mapping(function(fallback)
-				if luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
-				else
-					fallback()
-				end
-			end, { "i", "s" }),
-
-			-- ["<right>"] = cmp.mapping(function(fallback)
-			-- 	if cmp.visible() then
-			-- 		cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-			-- 	else
-			-- 		fallback()
-			-- 	end
-			-- end, {"i", "s"}),
 		},
 
 		experimental = {
@@ -105,7 +77,7 @@ function M.config()
 		},
 
 		-- https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/default.lua
-		sorting = {  -- prevent it from putting all the snippets first..
+		sorting = {
 			comparators = {
 				compare.exact,
 				compare.score,
@@ -118,7 +90,6 @@ function M.config()
 		-- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
 		sources = cmp.config.sources({
 			{ name = 'nvim_lsp' },
-			{ name = 'luasnip', option = { use_show_condition = false }},
 			{ name = 'buffer' },
 			{ name = 'path' },
 		}),
@@ -127,7 +98,6 @@ function M.config()
 	cmp.setup.filetype('rust', {
 		sources = cmp.config.sources({
 			{ name = 'nvim_lsp', },
-			{ name = 'luasnip', option = { use_show_condition = false }, },
 			--{ name = 'buffer' },
 		})
 	})
@@ -135,7 +105,6 @@ function M.config()
 	cmp.setup.filetype('python', {
 		sources = cmp.config.sources({
 			{ name = 'nvim_lsp' },
-			{ name = 'luasnip', option = { use_show_condition = false }},
 			{ name = 'buffer' },
 			{ name = 'nvim_lsp_signature_help' },
 		})

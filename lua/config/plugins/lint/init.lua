@@ -11,7 +11,6 @@ local linters_by_ft = {
 	yaml = {'yamllint',},
 }
 
--- `ft=filetypes` does not work for some reason
 local filetypes = {}
 for k,_ in pairs(linters_by_ft) do
 	filetypes[#filetypes + 1] = k

@@ -13,6 +13,12 @@ local M = {
 		'nvim-telescope/telescope-file-browser.nvim',
 		'nvim-telescope/telescope-symbols.nvim',
 	},
+	keys = {
+		{'ftf', ':Telescope find_files'},
+		{'ftg', ':Telescope live_grep'},
+		{'fb',  ':Telescope buffers'},
+		{'ftd', ':Telescope lsp_document_symbols'},
+	},
 }
 
 function M.project_files(opts)
@@ -53,13 +59,6 @@ function M.config()
 	})
 	telescope.load_extension('fzf')
 	telescope.load_extension('file_browser')
-end
-
-function M.init()
-	vim.keymap.set('n', 'ftf', function() require('telescope.builtin').find_files() end) -- file-opener
-	vim.keymap.set('n', 'ftg', function() require('telescope.builtin').live_grep()  end) -- grep.
-	vim.keymap.set('n', 'fb', function() require('telescope.builtin').buffers() end) -- buffer-switcher
-	vim.keymap.set('n', 'ftd', function() require('telescope.builtin').lsp_document_symbols({symbols = 'function'}) end)
 end
 
 return M

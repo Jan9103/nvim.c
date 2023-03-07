@@ -1,4 +1,6 @@
 -- draw boxes and arrows
+
+-- luacheck: globals vim
 local M = {
 	'jbyuki/venn.nvim',
 	cmd = 'VBox',

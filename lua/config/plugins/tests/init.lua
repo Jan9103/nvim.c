@@ -1,4 +1,5 @@
 -- luacheck: globals vim
+--
 
 -- https://github.com/nvim-neotest/neotest#supported-runners
 -- https://github.com/nvim-neotest/neotest-vim-test
@@ -20,6 +21,7 @@ local M = {
 function M.config()
 	local adapters = {}
 	local ft = vim.o.filetype
+	local neotest = require('neotest')
 
 	-- i should never need two languages at once
 	if ft == 'python' then
@@ -28,7 +30,7 @@ function M.config()
 		adapters[#adapters+1] = rust.adapter()
 	end
 
-	require("neotest").setup({
+	neotest.setup({
 		adapters = adapters,
 		status = {
 			enabled = true,
@@ -72,19 +74,14 @@ function M.config()
 		jump = {enabled = true},
 		projects = {},
 	})
-end
 
-function M.init()
-	local function cmd(name, func)
-		vim.api.nvim_create_user_command(name, func, {})
-	end
-	cmd('NeotestRunTest',    function(_) require("neotest").run.run() end)
-	cmd('NeotestRunFile',    function(_) require("neotest").run.run(vim.fn.expand("%")) end)
-	cmd('NeotestDebugTest',  function(_) require("neotest").run.run({strategy = "dap"}) end)
-	cmd('NeotestStopTest',   function(_) require("neotest").run.stop() end)
-	cmd('NeotestAttachTest', function(_) require("neotest").run.attach() end)
-	cmd('NeotestSummary',    function(_) require('neotest').summary.open() end)
-	cmd('NeotestPanel',      function(_) require('neotest').output_panel.open() end)
+	vim.api.nvim_create_user_command('NeotestRunTest',   function() neotest.run.run() end, {})
+	vim.api.nvim_create_user_command('NeotestRunFile',   function() neotest.run.run(vim.fn.expand("%")) end, {})
+	vim.api.nvim_create_user_command('NeotestDebugTest', function() neotest.run.run({strategy = "dap"}) end, {})
+	vim.api.nvim_create_user_command('NeotestStopTest',  function() neotest.run.stop() end, {})
+	vim.api.nvim_create_user_command('NeotestAttachTest',function() neotest.run.attach() end, {})
+	vim.api.nvim_create_user_command('NeotestSummary',   function() neotest.summary.open() end, {})
+	vim.api.nvim_create_user_command('NeotestPanel',     function() neotest.output_panel.open() end, {})
 end
 
 return M

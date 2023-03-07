@@ -3,7 +3,7 @@
 
 local M = {
 	'folke/todo-comments.nvim',
-	event = "BufReadPost",
+	event = 'VeryLazy',
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 	},

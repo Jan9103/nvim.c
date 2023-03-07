@@ -31,12 +31,12 @@ require('lazy').setup('config.plugins', {
 			disabled_plugins = {
 				'gzip',
 				'matchit',
-				'matchparen',
 				'netrwPlugin',
 				'tarPlugin',
 				'tohtml',
 				'tutor',
 				'zipPlugin',
+				--'matchparen',
 			},
 		},
 	},

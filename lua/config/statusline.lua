@@ -15,8 +15,6 @@ local mode_colors = {
 }
 local bg = design.c.menu
 
-local lsp_symbols = { Error=" ", Info=" ", Warn=" ", Hint="" }
-
 local is_loaded
 local M = {}
 
@@ -36,7 +34,6 @@ function M.setup()
 	vim.opt.laststatus = 2
 
 	local augroup = vim.api.nvim_create_augroup('STATUSLINE_AU', {})
-	-- vim.api.nvim_create_autocmd('BufEnter', {callback=update_branch})
 	vim.api.nvim_create_autocmd(
 		{'BufEnter', 'BufReadPost', 'ColorScheme', 'TabEnter', 'TabClosed'},
 		{callback=apply_to_win, group=augroup}
@@ -45,17 +42,16 @@ end
 
 local function get_diagnostics()
 	local lsp_details = ""
-	for type, sign in pairs(lsp_symbols) do
+	for type, sign in pairs(design.lsp_symbols) do
 		local count = #vim.diagnostic.get(0, {severity=type})
-		local hl = "%#DiagnosticSign"..type.."#"
-		local number = count > 0 and hl..sign..count.." " or ""
+		local number = count > 0 and sign..count.." " or ""
 		lsp_details = lsp_details..number
 	end
 	return lsp_details
 end
 
 function M.inactive_statusline()
-	local fg = mode_colors[vim.api.nvim_get_mode()['mode']]
+	local fg = design.c.comment
 	vim.api.nvim_set_hl(0, "StatuslineNorm", {fg=fg, bg=bg})
 	vim.api.nvim_set_hl(0, "StatuslineInv", {fg=bg, bg=fg})
 
@@ -63,7 +59,7 @@ function M.inactive_statusline()
 end
 
 function M.active_statusline()
-	local fg = mode_colors[vim.api.nvim_get_mode()['mode']]
+	local fg = mode_colors[vim.api.nvim_get_mode()['mode']] or design.c.red
 	vim.api.nvim_set_hl(0, "StatuslineNorm", {fg=fg, bg=bg})
 	vim.api.nvim_set_hl(0, "StatuslineInv", {fg=bg, bg=fg})
 

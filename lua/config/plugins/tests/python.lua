@@ -3,7 +3,6 @@
 local M = {
 	dependency = {
 		'nvim-neotest/neotest-python',
-		--build = ':TSInstall python',
 	}
 }
 
