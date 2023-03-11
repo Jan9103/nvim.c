@@ -1,2 +1,6 @@
 /spell/
 /lazy-lock.json
+
+# rust
+/target
+*.so

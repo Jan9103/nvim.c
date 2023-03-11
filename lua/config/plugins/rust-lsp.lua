@@ -13,7 +13,7 @@ local M = {
 function M.config()
 	local ih = require("inlay-hints")
 
-	ih.setup({only_current_line = false,})
+	ih.setup({only_current_line = true,})
 
 	local lspconfig = require'lspconfig'
 	local cmp_lsp = require'cmp_nvim_lsp'
@@ -59,6 +59,8 @@ function M.config()
 			end,
 			inlay_hints = {
 				auto = false,
+				only_current_line = true,
+				show_parameter_hints = false,
 			},
 		},
 		server = lsp_config,
