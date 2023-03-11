@@ -7,7 +7,6 @@ local linters_by_ft = {
 	plaintex = {'chktex',},  -- latex
 	python = {'mypy',},
 	rst = {'rstcheck',},
-	vim = {'vint',},
 	yaml = {'yamllint',},
 }
 
