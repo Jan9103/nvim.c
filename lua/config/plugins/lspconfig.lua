@@ -28,7 +28,7 @@ function M.config()
 	-------- Server -------
 	lspc.bashls.setup{} -- {cmd={'bash-language-server', 'start'}}
 	lspc.nil_ls.setup{}  -- nix
-	--lspcclangd.setup{}  -- c
+	lspc.clangd.setup{}  -- c
 	lspc.cssls.setup{}     -- css
 	lspc.dockerls.setup{}  -- docker
 	lspc.esbonio.setup{}   -- rst

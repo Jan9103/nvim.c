@@ -1,8 +1,15 @@
 -- luacheck: globals vim
-vim.keymap.set('n', 'f', '')
-vim.keymap.set('n', 'F', '')
+
+local config_path = vim.fn.stdpath('config')
+
+if not vim.loop.fs_stat(config_path .. '/lua/init.so') then
+	vim.cmd.cd(config_path)
+	vim.cmd.make() -- compile c
+end
+require('init')
 
 require('config.lazy')
 require('config.options')
-require('config.keybinds')
+require('config.keymaps')
 require('config.statusline').setup()
+vim.cmd('colorscheme mytheme')

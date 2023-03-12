@@ -1,2 +1,7 @@
+# compiled c config
+*.so
+
+# dictionaries
 /spell/
+# vim-package version locking
 /lazy-lock.json

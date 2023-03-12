@@ -7,6 +7,7 @@
 - per project language-server config (via nvim-lspconfig)
 - A good (enough) dracula-ish design
 - Controls and shortcuts adjusted for my workflow and keyboard-layout
+- partially written in c (so to [nullchilly](https://github.com/nullchilly/CatNvim))
 
 ### Primarily configured for:
 - Python
