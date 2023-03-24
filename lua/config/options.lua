@@ -1,5 +1,11 @@
 -- luacheck: globals vim
---
+
+if vim.env.DISPLAY ~= nil then
+	-- use system clipboard
+	-- https://vim.fandom.com/wiki/Accessing_the_system_clipboard
+	vim.o.clipboard="unnamedplus"
+end
+
 
 vim.opt.foldlevel = 99
 

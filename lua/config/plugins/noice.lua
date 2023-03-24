@@ -40,6 +40,9 @@ function M.config()
 				view = 'hover',
 			},
 		},
+		messages = {
+			enabled = true,
+		},
 	})
 end
 

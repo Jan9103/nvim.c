@@ -14,10 +14,10 @@ local M = {
 		'nvim-telescope/telescope-symbols.nvim',
 	},
 	keys = {
-		{'ftf', ':Telescope find_files'},
-		{'ftg', ':Telescope live_grep'},
-		{'fb',  ':Telescope buffers'},
-		{'ftd', ':Telescope lsp_document_symbols'},
+		{'ftf', ':Telescope find_files<cr>'},
+		{'ftg', ':Telescope live_grep<cr>'},
+		{'fb',  ':Telescope buffers<cr>'},
+		{'ftd', ':Telescope lsp_document_symbols<cr>'},
 	},
 }
 

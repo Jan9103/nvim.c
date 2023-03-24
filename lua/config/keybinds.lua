@@ -49,8 +49,15 @@ noremap('n', '<Tab>', '>>')
 noremap('n', '<S-Tab>', '<<')
 
 noremap('n', 'fs', ':sor i<CR>')
+noremap('n', '+', 'vg<C-a>')
+noremap('n', '-', 'vg<C-x>')
+noremap('n', 'fv', ':set virtualedit=all<cr>')
 
 -------------- INSERT MODE ------------------
+noremap('i', '<A-n>', '<left>')
+noremap('i', '<A-e>', '<up>')
+noremap('i', '<A-i>', '<down>')
+noremap('i', '<A-o>', '<right>')
 
 -------------- VISUAL MODE ------------------
 --- search selected text ---
@@ -61,6 +68,8 @@ map('v', '>>', '')
 map('v', '<<', '')
 noremap('v', '<Tab>', '>><Esc>gv')
 noremap('v', '<S-Tab>', '<<<Esc>gv')
+noremap('v', '+', 'g<C-a>')
+noremap('v', '-', 'g<C-x>')
 
 -------------- TERM MODE --------------------
 -- window switching --
