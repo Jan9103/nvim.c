@@ -13,9 +13,15 @@ local M = {
 }
 
 function M.config()
-	require("securitree").setup({
+	local pl = require('project-lua').config
+	local st = require('securitree')
+
+	st.setup({
 		-- since we only load the plugin on command its fine
-		autocmd = true,  -- BufWritePre & BufEnter
+		autocmd = pl.securitree.autocmd,  -- BufWritePre & BufEnter
+		paths = {
+			vim.fn.stdpath('config') .. '/securitree-queries'
+		}
 	})
 end
 

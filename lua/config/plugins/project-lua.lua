@@ -14,8 +14,19 @@ local defaults = {
 			ignore_missing_imports = false,
 		},
 	},
+	securitree = {
+		autostart = false,
+		autocmd = true,
+	},
 }
 
 return {'jan9103/project.lua.nvim',
-	config = function() require('project-lua').setup(defaults) end,
+	config = function()
+		local plp = require('project-lua')
+		plp.setup(defaults)
+		local pl = plp.config
+		if pl.securitree.autostart then
+			require('securitree').run_queries()
+		end
+	end,
 }
