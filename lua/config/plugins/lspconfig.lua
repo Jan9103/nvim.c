@@ -35,19 +35,20 @@ function M.config()
 	lspc.eslint.setup{}    -- javascript
 	lspc.html.setup{}      -- html
 	lspc.jsonls.setup{}    -- json
-	lspc.pylsp.setup{
-		settings = {pylsp = {plugins = {
-			flake8 = {enabled = false},
-			mccabe = {enabled = false},
-			pycodestyle = {enabled = false},
-			pydocstyle = {enabled = false},
-			pyflakes = {enabled = false},
-			pylint = {enabled = false, live_mode = true, strict = false},
-			pylsp_mypy = {enabled = false},
-			rope_completion = {enabled = false},
-			ruff = {enabled = false},
-		}}}
-	}
+	lspc.pyright.setup{}
+	-- lspc.pylsp.setup{
+	-- 	settings = {pylsp = {plugins = {
+	-- 		flake8 = {enabled = false},
+	-- 		mccabe = {enabled = false},
+	-- 		pycodestyle = {enabled = false},
+	-- 		pydocstyle = {enabled = false},
+	-- 		pyflakes = {enabled = false},
+	-- 		pylint = {enabled = false, live_mode = true, strict = false},
+	-- 		pylsp_mypy = {enabled = false},
+	-- 		rope_completion = {enabled = false},
+	-- 		ruff = {enabled = false},
+	-- 	}}}
+	-- }
 	lspc.texlab.setup{}    -- latex
 	lspc.tsserver.setup{}  -- typescript
 
