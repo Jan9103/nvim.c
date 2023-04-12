@@ -22,6 +22,7 @@ n,<Tab>,>>
 n,d^,v^x
 n,fd,:w !diff % -<CR>
 n,ff,<C-w>T
+n,fp,<cmd>Debugprint<CR>
 n,fs,:sor i<CR>
 n,fv,:set virtualedit=all<CR>
 n,q,:q<CR>
