@@ -25,6 +25,13 @@ I would not recommend using this as a template! The settings are very personal a
 - install language-servers and linters manually via `:Mason`
 - install Treesitter languages via `:TSInstall <language>`
 
+### OS-side dependencies
+
+- ripgrep
+- find
+- fzf
+- (optional) libqalculate (for the `:Qualc` command)
+
 ### Fix Mason MyPy, etc installations
 
 [related mason issue](https://github.com/williamboman/mason.nvim/issues/372)
