@@ -1,22 +1,39 @@
 local M = {
-	'petertriho/nvim-scrollbar',
+	'kensyo/nvim-scrlbkun',
 	event = 'VeryLazy',
 }
 
 function M.config()
-	require("scrollbar").setup({
-		show = true,
-		show_in_active_only = true,
-		set_highlights = true,
-		max_lines = false,
-		hide_if_all_visible = true,
-		handlers = {
-			cursor = true,
-			diagnostic = true,
-			gitsigns = false,
-			handle = true,
-			search = false,
-		}
+	require('scrlbkun').setup({
+		single_window = true,
+		excluded_filetypes = {},
+		excluded_buftypes = {"prompt"},
+		fadeout_time = 2000, -- ms
+		width = 1,
+
+		bar = {
+			enable = true,
+			draw_columns = {1},
+		},
+
+		cursor = {
+			enable = true,
+			draw_columns = {1},
+		},
+
+		search = {
+			enable = true,
+			draw_columns = {1},
+		},
+
+		diagnostics = {
+			enable = true,
+			draw_columns = {1},
+		},
+
+		githunks = {
+			enable = false,
+		},
 	})
 end
 
