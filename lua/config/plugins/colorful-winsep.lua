@@ -5,7 +5,7 @@ local M = {
 }
 
 function M.config()
-	local d = require('config.design')
+	local d = require('config.design.config')
 	require('colorful-winsep').setup({
 		highlight = {
 			bg = d.c.bg,

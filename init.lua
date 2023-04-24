@@ -2,9 +2,8 @@
 vim.keymap.set('n', 'f', '')
 vim.keymap.set('n', 'F', '')
 
---require('init')
-require('config.lazy')
+require('config.lazy')  -- since lazy applies lua caching run it first
+require('config.design').setup()
 require('config.options')
 require('config.keybinds')
-require('config.statusline').setup()
 require('config.journal')

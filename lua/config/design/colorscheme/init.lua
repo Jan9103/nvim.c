@@ -1,5 +1,5 @@
 -- luacheck: globals vim
-local d = require('config.design')
+local d = require('config.design.config')
 local g = vim.g
 local nvim_set_hl = vim.api.nvim_set_hl
 
@@ -32,7 +32,7 @@ g.terminal_color_15 = d.c.bright_white
 g.terminal_color_background = d.c.bg
 g.terminal_color_foreground = d.c.fg
 
-local groups = require("config.colorscheme.groups")
+local groups = require("config.design.colorscheme.groups")
 
 for group, setting in pairs(groups) do
 	nvim_set_hl(0, group, setting)

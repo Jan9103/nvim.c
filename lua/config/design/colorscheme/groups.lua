@@ -1,4 +1,4 @@
-local c = require('config.design').c
+local c = require('config.design.config').c
 
 return {
 	Normal = { fg = c.fg, bg = c.bg, },

@@ -9,7 +9,7 @@ local M = {
 
 function M.config()
 	local saga = require("lspsaga")
-	local design = require('config.design')
+	local design = require('config.design.config')
 
 	saga.setup({
 		-- single, double, rounded, bold, plus

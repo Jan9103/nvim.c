@@ -1,1 +1,1 @@
-require('config.colorscheme')
+require('config.design.colorscheme')

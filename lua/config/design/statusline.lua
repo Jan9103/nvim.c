@@ -1,5 +1,5 @@
 -- luacheck: globals vim
-local design = require('config.design')
+local design = require('config.design.config')
 local mode_colors = {
 	c = design.c.orange,
 	i = design.c.green,
@@ -21,9 +21,9 @@ local M = {}
 local function apply_to_win()
 	for _, win in pairs(vim.api.nvim_list_wins()) do
 		if vim.api.nvim_get_current_win() == win then
-			vim.wo[win].statusline = '%!v:lua.require\'config.statusline\'.active_statusline()'
+			vim.wo[win].statusline = '%!v:lua.require\'config.design.statusline\'.active_statusline()'
 		elseif vim.api.nvim_buf_get_name(0) ~= "" then
-			vim.wo[win].statusline = '%!v:lua.require\'config.statusline\'.inactive_statusline()'
+			vim.wo[win].statusline = '%!v:lua.require\'config.design.statusline\'.inactive_statusline()'
 		end
 	end
 end
@@ -67,14 +67,14 @@ function M.active_statusline()
 	local f_name = '%t'
 	local edited = vim.bo.mod and " " or ""
 	local readonly = vim.bo.readonly and " " or ""
-	local ft_icon = design.file_icons[vim.o.filetype] or ''
+	local ft_icon = design.file_icons[vim.bo.filetype] or ''
 
 	return "%#StatuslineInv#"
 		.. get_diagnostics()
 		.. "%#StatuslineNorm#%="
 		.. " " .. f_name .. edited .. readonly .. " "
 		.. "%=%#StatuslineInv#"
-		.. ft_icon .. vim.o.filetype
+		.. ft_icon .. vim.bo.filetype
 end
 
 return M

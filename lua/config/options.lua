@@ -21,7 +21,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.list = true
 vim.opt.listchars = {
-	tab = '│›', -- "indent-blankline" hides the first char -> requires 2 chars to be visible
+	tab = '› ',
 	lead = '·',
 	trail = '·',
 }
@@ -37,5 +37,3 @@ vim.opt.smartcase = true
 vim.cmd([[
 	set whichwrap+=<,>,[,]
 ]])
-
-vim.cmd('colorscheme mytheme')
