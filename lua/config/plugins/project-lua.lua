@@ -26,7 +26,7 @@ return {'jan9103/project.lua.nvim',
 		plp.setup(defaults)
 		local pl = plp.config
 		if pl.securitree.autostart then
-			require('securitree').run_queries()
+			require('securitree.queries').run_queries()
 		end
 	end,
 }
