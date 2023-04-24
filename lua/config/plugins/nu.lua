@@ -15,7 +15,7 @@ local M = {
 
 function M.config()
 	require('nu').setup({
-		complete_cmd_names = false,
+		use_lsp_features = false,
 	})
 end
 
