@@ -3,7 +3,6 @@ i,<A-e>,<up>
 i,<A-i>,<down>
 i,<A-n>,<left>
 i,<A-o>,<right>
-n, ,i <Esc>l
 n,+,<cmd>res +1<CR>
 n,+,vg<C-a>
 n,-,<cmd>res -1<CR>
@@ -14,17 +13,17 @@ n,<C-left>,<C-w>h
 n,<C-right>,<C-w>l
 n,<C-up>,<C-w>k
 n,<F3>,<cmd>set nornu nonu list!<CR>
+n,<leader>d,<cmd>w !diff % -<CR>
+n,<leader>f,<C-w>T
+n,<leader>p,<cmd>Debugprint<CR>
+n,<leader>s,<cmd>sor i<CR>
+n,<leader>v,<cmd>set virtualedit=all<CR>
 n,<Return>,o<Esc>
 n,<S-down>,<cmd>m .+1<CR>==
 n,<S-Tab>,<<
 n,<S-up>,<cmd>m .-2<CR>===
 n,<Tab>,>>
 n,d^,v^x
-n,fd,<cmd>w !diff % -<CR>
-n,ff,<C-w>T
-n,fp,<cmd>Debugprint<CR>
-n,fs,<cmd>sor i<CR>
-n,fv,<cmd>set virtualedit=all<CR>
 n,q,<cmd>q<CR>
 t,<C-down>,<C-w>j
 t,<C-left>,<C-w>h
