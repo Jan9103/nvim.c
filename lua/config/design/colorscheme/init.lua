@@ -9,7 +9,6 @@ end
 if vim.fn.exists("syntax_on") then
 	vim.cmd("syntax reset")
 end
-vim.o.background = 'dark'
 vim.o.termguicolors = true
 g.colors_name = 'mytheme'
 

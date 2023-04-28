@@ -187,6 +187,9 @@ void nvim_set_keymap(uint64_t channel_id, String mode, String lhs, String rhs,
     nvim_set_keymap(0, fs(m), fs(l), fs(r), &o, &e); \
   } while (0)
 
+// https://github.com/neovim/neovim/blob/master/src/nvim/api/private/helpers.h
+#define f(x) \
+  (Object) { .type = kObjectTypeFloat, .data.floating = x }
 #define i(x) \
   (Object) { .type = kObjectTypeInteger, .data.integer = x }
 #define s(x) \
@@ -219,7 +222,6 @@ extern void nvim_set_hl(Integer ns_id, String name,
 
 #define hl(k, v) \
   do { \
-    KeyDict_highlight o = {}; \
     Error e = ERROR_INIT; \
     nvim_set_hl(0, \
         (String){.data = k, .size = sizeof(k) / sizeof(char) - 1}, \
