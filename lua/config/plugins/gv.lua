@@ -1,11 +1,7 @@
 -- git blame & git log
 
-local M = {
+return {
 	'junegunn/gv.vim',
 	cmd = 'GV',
-	dependencies = {
-		'tpope/vim-fugitive',
-	},
+	dependencies = 'tpope/vim-fugitive',
 }
-
-return M

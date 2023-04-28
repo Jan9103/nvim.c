@@ -1,16 +1,11 @@
 -- fix syntarx highlight for todo-markers and also mark
 -- them as issues for trouble, etc
 
-local M = {
+return {
 	'folke/todo-comments.nvim',
 	event = 'VeryLazy',
-	dependencies = {
-		'nvim-lua/plenary.nvim',
-	},
+	dependencies = 'nvim-lua/plenary.nvim',
+	config = function()
+		require('todo-comments').setup({})
+	end,
 }
-
-function M.config()
-	require("todo-comments").setup{}
-end
-
-return M

@@ -1,16 +1,8 @@
 -- syntax highlight for colorcodes
 -- not active by default (-> command)
 
-local M = {
+return {
 	'norcalli/nvim-colorizer.lua',
-	cmd = {
-		'ColorizerAttachToBuffer',
-		'ColorizerToggle',
-	},
+	cmd = 'ColorizerToggle',
+	config = function() require('colorizer').setup() end,
 }
-
-function M.config()
-	require'colorizer'.setup()
-end
-
-return M

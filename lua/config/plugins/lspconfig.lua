@@ -4,7 +4,6 @@
 
 local M = {
 	'neovim/nvim-lspconfig',
-	--event = "BufReadPre",
 	lazy = false,
 	dependencies = {
 		'hrsh7th/cmp-nvim-lsp',
@@ -36,24 +35,11 @@ function M.config()
 	lspc.html.setup{}      -- html
 	lspc.jsonls.setup{}    -- json
 	lspc.pyright.setup{}
-	-- lspc.pylsp.setup{
-	-- 	settings = {pylsp = {plugins = {
-	-- 		flake8 = {enabled = false},
-	-- 		mccabe = {enabled = false},
-	-- 		pycodestyle = {enabled = false},
-	-- 		pydocstyle = {enabled = false},
-	-- 		pyflakes = {enabled = false},
-	-- 		pylint = {enabled = false, live_mode = true, strict = false},
-	-- 		pylsp_mypy = {enabled = false},
-	-- 		rope_completion = {enabled = false},
-	-- 		ruff = {enabled = false},
-	-- 	}}}
-	-- }
 	lspc.texlab.setup{}    -- latex
 	lspc.tsserver.setup{}  -- typescript
 
 
-	require('config.plugins.null-ls').setup({})
+	require('config.plugins.null-ls')
 
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)

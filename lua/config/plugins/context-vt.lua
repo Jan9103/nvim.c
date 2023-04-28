@@ -5,11 +5,8 @@
 
 local M = {
 	'haringsrob/nvim_context_vt',
-	--cmd = 'NvimContextVtToggle',
 	event = 'VeryLazy',
-	dependencies = {
-		'nvim-treesitter/nvim-treesitter',
-	},
+	dependencies = 'nvim-treesitter/nvim-treesitter',
 }
 
 function M.config()

@@ -21,20 +21,6 @@ local M = {
 	},
 }
 
-function M.project_files(opts)
-	opts = opts or {}
-	opts.show_untracked = true
-	if vim.loop.fs_stat('.git') then
-		require('telescope.builtin').git_files(opts)
-	else
-		local client = vim.lsp.get_active_clients()[1]
-		if client then
-			opts.cwd = client.config.root_dir
-		end
-		require('telescope.builtin').find_files(opts)
-	end
-end
-
 function M.config()
 	local telescope = require('telescope')
 	local borderless = false
@@ -46,12 +32,6 @@ function M.config()
 				prompt_position = 'top',
 			},
 			sorting_strategy = 'ascending',
-			--mappings = {
-			--	i = {
-			--		['<C-Down>'] = require('telescope.actions').cycle_history_next,
-			--		['<C-Up>'] = require('telescope.actions').cycle_history_prev,
-			--	},
-			--},
 			prompt_prefix = " ",
 			selection_caret = " ",
 			winblend = borderless and 0 or 10,

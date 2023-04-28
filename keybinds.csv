@@ -12,7 +12,6 @@ n,<C-down>,<C-w>j
 n,<C-left>,<C-w>h
 n,<C-right>,<C-w>l
 n,<C-up>,<C-w>k
-n,<F3>,<cmd>set nornu nonu list!<CR>
 n,<leader>d,<cmd>w !diff % -<CR>
 n,<leader>f,<C-w>T
 n,<leader>p,<cmd>Debugprint<CR>

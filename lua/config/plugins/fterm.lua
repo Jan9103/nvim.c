@@ -13,9 +13,6 @@ function M.config()
 		border = 'rounded',
 		cmd = 'nu',
 		auto_close = true, -- exit with <C-d>
-		-- on_exit = function() end,
-		-- on_stdout
-		-- on_stderr
 	})
 	local monitor = fterm:new({cmd = 'btm'})
 	vim.keymap.set('n', '<A-b>', function() monitor:toggle() end)

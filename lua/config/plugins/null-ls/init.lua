@@ -10,7 +10,7 @@ local M = {
 	},
 }
 
-function M.setup(options)
+function M.config(options)
 	require('mason')  -- add mason programs to the $PATH
 
 	local pl = require('project-lua').config
@@ -36,7 +36,7 @@ function M.setup(options)
 	})
 end
 
-function M.has_formatter(ft)
+local function has_formatter(ft)
 	local sources = require('null-ls.sources')
 	local available = sources.get_available(ft, 'NULL_LS_FORMATTING')
 	return #available > 0

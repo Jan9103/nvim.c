@@ -3,12 +3,12 @@
 local M = {
 	'glepnir/lspsaga.nvim',
 	branch = 'main',
-	cmd = {'Lspsaga'},
-	dependencies = {"nvim-tree/nvim-web-devicons"},
+	cmd = 'Lspsaga',
+	dependencies = 'nvim-tree/nvim-web-devicons',
 }
 
 function M.config()
-	local saga = require("lspsaga")
+	local saga = require('lspsaga')
 	local design = require('config.design.config')
 
 	saga.setup({

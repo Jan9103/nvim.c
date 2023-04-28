@@ -1,15 +1,12 @@
 -- highlight which lines have changed, toggle staging, etc
 -- command: Gitsigns
 
-local M = {
+return {
 	'lewis6991/gitsigns.nvim',
 	cmd = 'Gitsigns',
+	config = function()
+		require('gitsigns').setup({
+			signcolumn = false,
+		})
+	end,
 }
-
-function M.config()
-	require('gitsigns').setup({
-		signcolumn = false,  -- we load it on `toggle` command -> dont want to deactive on toggle
-	})
-end
-
-return M
