@@ -149,7 +149,7 @@ extern char *stdpaths_get_xdg_var(const XDGVarType idx);
 extern char *stdpaths_user_data_subpath(const char *fname);
 extern bool os_isdir(const char *name);
 extern char *runtimepath_default(bool clean_arg);
-extern void nvim_set_option_value(String name, Object value,
+extern void nvim_set_option_value(uint64_t channel_id, String name, Object value,
                                   Dict(option) * opts, Error *err);
 extern char *concat_str(const char *str1, const char *str2);
 void opt(char *k, char *old, char *new_) {
@@ -158,7 +158,7 @@ void opt(char *k, char *old, char *new_) {
   char *x = concat_str(concat_str(old, ","), new_);
   Object v = {.type = kObjectTypeString,
               .data = {.string = (String){x, strlen(x) - 1}}};
-  nvim_set_option_value((String){.data = k, .size = strlen(k)}, v, &o, &e);
+  nvim_set_option_value(0, (String){.data = k, .size = strlen(k)}, v, &o, &e);
 }
 
 #define ms(x) \
@@ -203,14 +203,14 @@ extern void nvim_set_var(String name, Object value, Error *err);
     nvim_set_var((String){.data = k, .size = sizeof(k) / sizeof(char) - 1}, v, &e); \
   } while (0)
 
-extern void nvim_set_option_value(String name, Object value,
+extern void nvim_set_option_value(uint64_t channel_id, String name, Object value,
                                   Dict(option) * opts, Error *err);
 #define o(k, v) \
   do { \
     KeyDict_option o = {}; \
     Error e = ERROR_INIT; \
     nvim_set_option_value( \
-        (String){.data = k, .size = sizeof(k) / sizeof(char) - 1}, v, &o, &e); \
+        0, (String){.data = k, .size = sizeof(k) / sizeof(char) - 1}, v, &o, &e); \
   } while (0)
 
 // https://github.com/neovim/neovim/blob/09b6a68c3700aa5d8ae26a62896b091572ae0a8d/src/nvim/api/vim.c
