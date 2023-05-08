@@ -1,6 +1,34 @@
 #include "nvim.h"
 #include <stdlib.h>
 
+#define LAZY_CONFIG "{ \
+  \"defaults\": { \
+    \"lazy\": true \
+  }, \
+  \"ui\": { \
+    \"border\": \"rounded\" \
+  }, \
+  \"change_detection\": { \
+    \"enabled\": false \
+  }, \
+  \"performance\": { \
+    \"rtp\": { \
+      \"disabled_plugins\": [ \
+        \"gzip\", \
+        \"matchit\", \
+        \"netrwPlugin\", \
+        \"tarPlugin\", \
+        \"tohtml\", \
+        \"tutor\", \
+        \"zipPlugin\" \
+      ] \
+    } \
+  }, \
+  \"readme\": { \
+    \"enabled\": false \
+  } \
+}"
+
 int luaopen_config_lazy(lua_State *L) {
   if (getenv("VIM_NOPLUGIN") != 0) return 1;
 
@@ -28,6 +56,7 @@ int luaopen_config_lazy(lua_State *L) {
   lua_remove(L, -2);
   const int lc3 = lua_gettop(L);
   lua_pushliteral(L, "config.plugins");
+
   lua_getfield(L, LUA_GLOBALSINDEX, "vim");
   lua_pushliteral(L, "json");
   lua_gettable(L, -2);
@@ -35,9 +64,9 @@ int luaopen_config_lazy(lua_State *L) {
   lua_pushliteral(L, "decode");
   lua_gettable(L, -2);
   lua_remove(L, -2);
-  // TODO: convert https://github.com/openresty/lua-cjson/blob/master/lua_cjson.c
-  lua_pushliteral(L, "{\"defaults\":{\"lazy\": true},\"ui\":{\"border\": \"rounded\"},\"change_detection\":{\"enabled\": false},\"performance\":{\"rtp\":{\"disabled_plugins\":[\"gzip\",\"matchit\",\"netrwPlugin\",\"tarPlugin\",\"tohtml\",\"tutor\",\"zipPlugin\"]}}}");
+  lua_pushliteral(L, LAZY_CONFIG);
   lua_call(L, 1, LUA_MULTRET);
+
   lua_call(L, (lua_gettop(L) - lc3), 0);
 
   return 1;
