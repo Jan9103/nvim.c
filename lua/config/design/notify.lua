@@ -47,6 +47,7 @@ function M.notify(msg, _log_level, _opts)
 	-- log_level: :h vim.log.levels
 
 	local time_to_read = 2500 + (#msg * 60)
+	if time_to_read > 15000 then time_to_read = 15000 end -- 15sec
 	msg = vim.split(msg, "\n")
 
 	for i=1,#msg do
