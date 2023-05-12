@@ -3,6 +3,8 @@
 -- luacheck: globals vim
 local M = {
 	'hrsh7th/nvim-cmp',
+	-- https://github.com/hrsh7th/nvim-cmp/issues/1565
+	commit = '1cad30fcffa282c0a9199c524c821eadc24bf939',
 	lazy = false,
 	dependencies = {
 		'hrsh7th/cmp-buffer',
